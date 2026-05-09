@@ -12,9 +12,14 @@ interface Props {
 }
 const {
   title,
-  description = 'Aslan Hukuk Bürosu — 2003\'ten bu yana ticaret, iş, aile, ceza, gayrimenkul ve idare hukukunda sessiz, kararlı temsil.',
+  description = 'Aslan Hukuk Bürosu — Av. Mesut Aslan tarafından yönetilen, ticaret, iş, aile, ceza, gayrimenkul ve idare hukukunda sessiz, kararlı bireysel temsil.',
   current
 } = Astro.props;
+
+// Helper: only emit fields that aren't TODO placeholders
+const cleanPhone = site.phone.startsWith('TODO') ? undefined : site.phone.replace(/\s+/g, '');
+const cleanEmail = site.email.startsWith('TODO') ? undefined : site.email;
+const cleanFounding = site.established.startsWith('TODO') ? undefined : site.established;
 ---
 <!doctype html>
 <html lang="tr">
@@ -39,21 +44,18 @@ const {
 
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'LegalService',
+      '@type': ['LegalService', 'Attorney'],
       name: 'Aslan Hukuk Bürosu',
+      alternateName: 'Aslan Hukuk',
       url: 'https://aslanhukuk.com.tr',
-      telephone: site.phone.replace(/\s+/g,''),
-      email: site.email,
-      foundingDate: site.established,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Levent Mah. Büyükdere Cad. No:120 K:5',
-        addressLocality: 'Şişli',
-        addressRegion: 'İstanbul',
-        addressCountry: 'TR'
-      },
-      areaServed: 'Türkiye'
-    })} />
+      ...(cleanPhone && { telephone: cleanPhone }),
+      ...(cleanEmail && { email: cleanEmail }),
+      ...(cleanFounding && { foundingDate: cleanFounding }),
+      founder: { '@type': 'Person', name: site.attorney.name, jobTitle: site.attorney.role },
+      address: { '@type': 'PostalAddress', addressLocality: 'İstanbul', addressCountry: 'TR' },
+      areaServed: 'Türkiye',
+      knowsAbout: ['Aile Hukuku','Ticaret Hukuku','İş Hukuku','Ceza Hukuku','Gayrimenkul Hukuku','İdare ve Vergi Hukuku']
+    }, null, 0)} />
 
     <title>{title}</title>
   </head>
@@ -63,10 +65,12 @@ const {
       <slot />
     </main>
     <Footer />
-    <WhatsAppFab
-      client:idle
-      phone={site.whatsapp}
-      message="Merhaba, hukuki bir konuda görüşme talep etmek istiyorum."
-    />
+    {!site.whatsapp.startsWith('TODO') && (
+      <WhatsAppFab
+        client:idle
+        phone={site.whatsapp}
+        message="Merhaba, hukuki bir konuda görüşme talep etmek istiyorum."
+      />
+    )}
   </body>
 </html>

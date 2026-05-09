@@ -4,6 +4,10 @@ import { nav, site } from '../data/site';
 
 interface Props { current?: string; }
 const { current = '/' } = Astro.props;
+
+const phoneClean = site.phone.startsWith('TODO') ? '' : site.phone.replace(/\s+/g, '');
+const phoneLabel = site.phone.startsWith('TODO') ? 'TELEFON' : site.phone;
+const hasPhone = !site.phone.startsWith('TODO');
 ---
 <!-- Main nav (noir, dominant) -->
 <header
@@ -15,7 +19,7 @@ const { current = '/' } = Astro.props;
       <Monogram class="text-gold transition group-hover:text-gold-soft" size={42} />
       <span class="leading-tight">
         <span class="block font-display text-[1.45rem] text-paper" style="letter-spacing:-0.012em; font-weight: 500;">Aslan Hukuk</span>
-        <span class="block font-mono uppercase text-gold-soft mt-1" style="font-size:0.6rem;letter-spacing:0.32em;">Bürosu &amp; Danışmanlık</span>
+        <span class="block font-mono uppercase text-gold-soft mt-1" style="font-size:0.6rem;letter-spacing:0.32em; font-weight:600;">Av. Mesut Aslan</span>
       </span>
     </a>
 
@@ -39,9 +43,11 @@ const { current = '/' } = Astro.props;
     </nav>
 
     <div class="justify-self-end flex items-center gap-3 md:gap-4">
-      <a href={`tel:${site.phone.replace(/\s+/g,'')}`}
-         class="hidden xl:inline font-mono uppercase text-paper/85 hover:text-gold-soft transition"
-         style="font-size:0.72rem;letter-spacing:0.22em; font-weight:500;">{site.phone}</a>
+      {hasPhone && (
+        <a href={`tel:${phoneClean}`}
+           class="hidden xl:inline font-mono uppercase text-paper/85 hover:text-gold-soft transition"
+           style="font-size:0.72rem;letter-spacing:0.22em; font-weight:500;">{phoneLabel}</a>
+      )}
 
       <a href="/iletisim"
          class="hidden md:inline-block bg-gold text-noir font-mono uppercase border border-gold hover:bg-paper hover:border-paper transition"
@@ -70,9 +76,11 @@ const { current = '/' } = Astro.props;
       <a href="/iletisim"
          class="text-center bg-gold text-noir font-mono uppercase mt-4 py-4 hover:bg-paper transition"
          style="font-size:0.78rem;letter-spacing:0.22em; font-weight:600;">RANDEVU AL</a>
-      <a href={`tel:${site.phone.replace(/\s+/g,'')}`}
-         class="text-center font-mono uppercase mt-2 py-3 text-paper/75"
-         style="font-size:0.72rem;letter-spacing:0.22em;">{site.phone}</a>
+      {hasPhone && (
+        <a href={`tel:${phoneClean}`}
+           class="text-center font-mono uppercase mt-2 py-3 text-paper/75"
+           style="font-size:0.72rem;letter-spacing:0.22em;">{phoneLabel}</a>
+      )}
     </div>
   </nav>
 </header>
