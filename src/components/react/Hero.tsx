@@ -183,7 +183,7 @@ export default function Hero() {
                   className="font-mono text-gold"
                   style={{ fontSize: '0.62rem', letterSpacing: '0.22em', fontWeight: 600 }}
                 >
-                  ANK · TR
+                  ANKARA · TÜRKİYE
                 </div>
               </figcaption>
             </div>
