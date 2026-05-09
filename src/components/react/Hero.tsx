@@ -139,10 +139,10 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — Portrait, viewport-capped height, never overflows */}
+          {/* RIGHT — Portrait, pulled upward to align with header bottom */}
           <motion.figure
             {...(reduce ? {} : fade(0.4))}
-            className="relative m-0 flex flex-col group/portrait"
+            className="relative m-0 flex flex-col group/portrait lg:-mt-[clamp(2.5rem,5vw,5rem)]"
           >
             <div
               className="bg-noir overflow-hidden relative w-full hero-portrait-frame"
