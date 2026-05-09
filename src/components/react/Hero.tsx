@@ -26,7 +26,7 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="pt-[clamp(2.5rem,5vw,5rem)] pb-[clamp(3rem,6vw,5rem)]">
+    <section className="pt-[clamp(2.5rem,5vw,5rem)] pb-[clamp(5rem,9vw,8rem)]">
       <div className="shell">
 
         {/* ───── ROW 1: Headline (left) + Portrait (right), top-aligned ───── */}
@@ -142,13 +142,13 @@ export default function Hero() {
           {/* RIGHT — Portrait, viewport-capped height, never overflows */}
           <motion.figure
             {...(reduce ? {} : fade(0.4))}
-            className="relative m-0 lg:max-h-[78vh] flex flex-col group/portrait"
+            className="relative m-0 lg:max-h-[88vh] flex flex-col group/portrait"
           >
             <div
               className="bg-noir overflow-hidden relative w-full"
               style={{
                 aspectRatio: '4 / 5',
-                maxHeight: 'clamp(420px, 72vh, 760px)',
+                maxHeight: 'clamp(480px, 82vh, 880px)',
               }}
             >
               <img
@@ -204,7 +204,7 @@ export default function Hero() {
         {/* ───── ROW 2: Görevler & Üyelikler (full-width, separated) ───── */}
         <motion.div
           {...(reduce ? {} : fade(1.1))}
-          className="mt-[clamp(3rem,6vw,5rem)] pt-7 border-t border-rule"
+          className="mt-[clamp(4rem,8vw,7rem)] pt-7 border-t border-rule"
         >
           <div
             className="font-mono uppercase text-ink-mute mb-5 flex items-center gap-3"
