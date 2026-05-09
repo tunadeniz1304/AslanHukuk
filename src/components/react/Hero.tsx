@@ -81,7 +81,7 @@ export default function Hero() {
                     style={{
                       color: '#8a6b2a',
                       fontStyle: 'italic',
-                      fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 0',
+                      fontVariationSettings: '"opsz" 144, "SOFT" 50, "WONK" 0',
                     }}
                   >
                     Kararlı temsil.
@@ -108,7 +108,7 @@ export default function Hero() {
                         style={{
                           fontStyle: 'italic',
                           color: '#8a6b2a',
-                          fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 0',
+                          fontVariationSettings: '"opsz" 144, "SOFT" 50, "WONK" 0',
                         }}
                       >
                         {w}
@@ -119,13 +119,37 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Standfirst */}
+            {/* Concrete sub-headline — bireysel müvekkil için somut bilgi */}
             <motion.p
-              {...(reduce ? {} : fade(0.85))}
-              className="lead"
-              style={{ maxWidth: '40ch', color: '#1a1a1a', marginTop: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 0 }}
+              {...(reduce ? {} : fade(0.78))}
+              className="font-display text-ink-soft"
+              style={{
+                fontSize: 'clamp(1.15rem, 1.5vw, 1.4rem)',
+                lineHeight: 1.4,
+                fontWeight: 500,
+                letterSpacing: '-0.01em',
+                marginTop: 'clamp(1.5rem, 2.5vw, 2rem)',
+                marginBottom: 0,
+                maxWidth: '32ch',
+              }}
             >
-              Aslan Hukuk Bürosu, ticaretin, ailenin ve devletin karşısında müvekkilini koruyan, bireysel pratiğe verilen önemle yönetilen bir hukuk bürosudur.
+              Aile, ticaret, iş, ceza, gayrimenkul ve idare hukukunda <span style={{ color: '#8a6b2a' }}>Ankara</span>'da bireysel temsil.
+            </motion.p>
+
+            {/* Standfirst — niyet/manifesto seviyesi */}
+            <motion.p
+              {...(reduce ? {} : fade(0.88))}
+              className="font-body text-ink-soft"
+              style={{
+                fontSize: 'clamp(1rem, 1.15vw, 1.1rem)',
+                lineHeight: 1.6,
+                fontWeight: 400,
+                marginTop: 'clamp(1.25rem, 2vw, 1.75rem)',
+                marginBottom: 0,
+                maxWidth: '42ch',
+              }}
+            >
+              Aslan Hukuk Bürosu, müvekkilini gürültüsüz ve tutarlı pratikle koruyan, bireysel ilkeyle yönetilen bir hukuk bürosudur.
             </motion.p>
 
             {/* CTA group */}
@@ -142,8 +166,10 @@ export default function Hero() {
           {/* RIGHT — Portrait, top edge slightly above headline, bottom aligned with CTA */}
           <motion.figure
             {...(reduce ? {} : fade(0.4))}
-            className="relative m-0 flex flex-col group/portrait lg:-mt-6 xl:-mt-10 lg:h-full"
+            className="relative m-0 flex flex-col group/portrait lg:-mt-3 xl:-mt-5 lg:h-full"
           >
+            {/* Top gold hairline — separates portrait from sticky noir header */}
+            <div className="hidden lg:block h-px bg-gold w-full mb-2" aria-hidden="true" />
             <div
               className="bg-noir overflow-hidden relative w-full hero-portrait-frame lg:flex-1"
             >
@@ -168,27 +194,27 @@ export default function Hero() {
                   mixBlendMode: 'multiply',
                 }}
               />
-              {/* Bottom caption strip */}
-              <figcaption className="absolute left-0 right-0 bottom-0 bg-noir text-paper px-5 py-4 flex items-end justify-between gap-4 z-10">
-                <div>
-                  <div
-                    className="font-mono uppercase text-gold-soft mb-1"
-                    style={{ fontSize: '0.6rem', letterSpacing: '0.28em', fontWeight: 600 }}
-                  >
-                    KURUCU AVUKAT
-                  </div>
-                  <div
-                    className="font-display text-paper"
-                    style={{ fontSize: 'clamp(1.2rem,1.8vw,1.55rem)', letterSpacing: '-0.012em', fontWeight: 500 }}
-                  >
-                    Av. Mesut Aslan
-                  </div>
+              {/* Top-right corner ribbon (location) */}
+              <div
+                className="absolute top-0 right-0 bg-gold text-noir font-mono uppercase z-20"
+                style={{ fontSize: '0.62rem', letterSpacing: '0.22em', fontWeight: 700, padding: '0.5rem 0.85rem' }}
+              >
+                ANKARA · TÜRKİYE
+              </div>
+
+              {/* Bottom caption strip — only 2 pieces of info, F-pattern friendly */}
+              <figcaption className="absolute left-0 right-0 bottom-0 bg-noir text-paper px-5 py-4 z-10">
+                <div
+                  className="font-mono uppercase text-gold-bright mb-1.5"
+                  style={{ fontSize: '0.6rem', letterSpacing: '0.28em', fontWeight: 600 }}
+                >
+                  KURUCU AVUKAT
                 </div>
                 <div
-                  className="font-mono text-gold"
-                  style={{ fontSize: '0.62rem', letterSpacing: '0.22em', fontWeight: 600 }}
+                  className="font-display text-paper"
+                  style={{ fontSize: 'clamp(1.25rem,1.85vw,1.6rem)', letterSpacing: '-0.012em', fontWeight: 500, lineHeight: 1.1 }}
                 >
-                  ANKARA · TÜRKİYE
+                  Av. Mesut Aslan
                 </div>
               </figcaption>
             </div>
