@@ -139,12 +139,19 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — Portrait, top-aligned, fixed aspect */}
+          {/* RIGHT — Portrait, viewport-capped height, never overflows */}
           <motion.figure
             {...(reduce ? {} : fade(0.4))}
-            className="relative m-0"
+            className="relative m-0 lg:max-h-[78vh] flex flex-col"
           >
-            <div className="aspect-[4/5] bg-noir overflow-hidden relative">
+            <div
+              className="bg-noir overflow-hidden relative w-full"
+              style={{
+                // Cap height to viewport — image will fit on any laptop screen
+                aspectRatio: '4 / 5',
+                maxHeight: 'clamp(420px, 72vh, 760px)',
+              }}
+            >
               <img
                 src="/photos/mesut-aslan.png"
                 alt="Av. Mesut Aslan — Kurucu Avukat"
@@ -153,7 +160,8 @@ export default function Hero() {
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                className="w-full h-full object-cover transition duration-700 hover:scale-[1.02]"
+                className="absolute inset-0 w-full h-full transition duration-700 hover:scale-[1.02]"
+                style={{ objectFit: 'cover', objectPosition: 'center 18%' }}
               />
               {/* Bottom caption strip */}
               <figcaption className="absolute left-0 right-0 bottom-0 bg-noir text-paper px-5 py-4 flex items-end justify-between gap-4">
