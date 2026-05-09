@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==============================================================
+   ASLAN HUKUK — Editorial base
+   ============================================================== */
+@layer base {
+  :root {
+    --t-fast: 200ms cubic-bezier(.2,.7,.3,1);
+    --t-med:  450ms cubic-bezier(.2,.7,.3,1);
+    --t-slow: 800ms cubic-bezier(.2,.7,.3,1);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    font-size: 17px;
+    line-height: 1.65;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  }
+
+  ::selection { background: #0a0a0a; color: #f5f1e8; }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-ink;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    line-height: 1.04;
+  }
+
+  a { color: inherit; text-decoration: none; transition: color var(--t-fast); }
+  img, svg { display: block; max-width: 100%; }
+  button { cursor: pointer; background: none; border: 0; color: inherit; font: inherit; }
+
+  hr { border: 0; height: 1px; @apply bg-rule; }
+}
+
+@layer components {
+  /* ----- Editorial type roles ----- */
+  .display {
+    @apply font-serif font-normal;
+    font-size: clamp(3.25rem, 8.5vw, 8rem);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+  }
+  .display em { @apply text-gold not-italic; font-style: italic; font-weight: 400; }
+
+  .h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.04; letter-spacing: -0.03em; }
+  .h2 { font-size: clamp(2rem, 4vw, 3.25rem);   line-height: 1.08; letter-spacing: -0.025em; }
+  .h3 { font-size: clamp(1.4rem, 2.2vw, 1.85rem); line-height: 1.2; letter-spacing: -0.015em; }
+
+  .lead {
+    @apply font-body text-ink-soft italic;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .eyebrow {
+    @apply font-mono uppercase text-ink-mute inline-flex items-center gap-2;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    font-weight: 500;
+  }
+  .eyebrow::before { content: ""; @apply bg-ink-mute; width: 24px; height: 1px; }
+  .eyebrow.on-dark { @apply text-gold-soft; }
+  .eyebrow.on-dark::before { @apply bg-gold-soft; }
+
+  .numeral {
+    @apply font-mono text-ink-mute;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+  }
+
+  /* ----- Layout primitives ----- */
+  .shell {
+    @apply w-full mx-auto;
+    max-width: 1440px;
+    padding-left: clamp(1.25rem, 4vw, 3rem);
+    padding-right: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .section { padding: clamp(4rem, 9vw, 9rem) 0; }
+  .section-tight { padding: clamp(2rem, 5vw, 4rem) 0; }
+
+  .hairline { @apply h-px bg-rule border-0; }
+  .hairline-dark { @apply h-px border-0; background: rgba(245,241,232,0.18); }
+
+  /* ----- CTAs ----- */
+  .ed-link {
+    @apply font-mono uppercase inline-flex items-baseline gap-2 text-ink;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    padding-bottom: 4px;
+    border-bottom: 1px solid currentColor;
+    transition: gap var(--t-fast), color var(--t-fast);
+  }
+  .ed-link::after { content: "→"; @apply font-serif; font-size: 0.95rem; transition: transform var(--t-fast); }
+  .ed-link:hover { gap: 0.95rem; @apply text-gold; }
+  .ed-link:hover::after { transform: translateX(4px); }
+  .ed-link.on-dark { @apply text-paper; }
+  .ed-link.on-dark:hover { @apply text-gold-soft; }
+
+  .ed-btn {
+    @apply inline-block font-mono uppercase bg-ink text-paper border border-ink;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    padding: 1.15rem 2.2rem;
+    transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+  }
+  .ed-btn:hover { @apply bg-gold border-gold text-paper; }
+  .ed-btn.outline { @apply bg-transparent text-ink; }
+  .ed-btn.outline:hover { @apply bg-ink text-paper; }
+  .ed-btn.on-dark { @apply bg-paper text-ink border-paper; }
+  .ed-btn.on-dark:hover { @apply bg-gold border-gold text-paper; }
+}
