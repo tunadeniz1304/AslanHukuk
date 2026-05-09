@@ -26,19 +26,21 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="section pt-[clamp(2.5rem,5vw,5rem)] pb-[clamp(4rem,9vw,8rem)]">
+    <section className="pt-[clamp(2.5rem,5vw,5rem)] pb-[clamp(3rem,6vw,5rem)]">
       <div className="shell">
-        {/* Two-column hero: headline + portrait */}
-        <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-10 lg:gap-16 items-end">
 
-          {/* LEFT — Headline */}
-          <div>
+        {/* ───── ROW 1: Headline (left) + Portrait (right), top-aligned ───── */}
+        <div className="grid grid-cols-1 lg:grid-cols-[6fr_5fr] gap-10 lg:gap-14 items-start">
+
+          {/* LEFT — Headline + lead + CTA, all stacked, vertical rhythm consistent */}
+          <div className="flex flex-col">
             <h1
-              className="display mb-0"
+              className="display"
               style={{
-                maxWidth: '12ch',
+                maxWidth: '14ch',
                 overflow: 'visible',
                 lineHeight: 1.06,
+                margin: 0,
               }}
             >
               {/* Line 1 — black */}
@@ -120,8 +122,8 @@ export default function Hero() {
             {/* Standfirst */}
             <motion.p
               {...(reduce ? {} : fade(0.85))}
-              className="lead mt-8 lg:mt-10"
-              style={{ maxWidth: '40ch', color: '#1a1a1a' }}
+              className="lead"
+              style={{ maxWidth: '40ch', color: '#1a1a1a', marginTop: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 0 }}
             >
               Aslan Hukuk Bürosu, ticaretin, ailenin ve devletin karşısında müvekkilini koruyan, bireysel pratiğe verilen önemle yönetilen bir hukuk bürosudur.
             </motion.p>
@@ -129,17 +131,18 @@ export default function Hero() {
             {/* CTA group */}
             <motion.div
               {...(reduce ? {} : fade(0.95))}
-              className="mt-8 flex gap-4 flex-wrap items-center"
+              className="flex gap-4 flex-wrap items-center"
+              style={{ marginTop: 'clamp(1.75rem, 3vw, 2.5rem)' }}
             >
               <a href="/iletisim" className="ed-btn">Görüşme Talep Et</a>
               <a href="/calisma-alanlari" className="ed-link">Çalışma Alanları</a>
             </motion.div>
           </div>
 
-          {/* RIGHT — Portrait */}
+          {/* RIGHT — Portrait, top-aligned, fixed aspect */}
           <motion.figure
             {...(reduce ? {} : fade(0.4))}
-            className="relative"
+            className="relative m-0"
           >
             <div className="aspect-[4/5] bg-noir overflow-hidden relative">
               <img
@@ -176,19 +179,18 @@ export default function Hero() {
                 </div>
               </figcaption>
             </div>
-
-            {/* Gold accent rule under portrait, offset like a stamp */}
+            {/* Gold offset rule (decorative) */}
             <div className="absolute -bottom-3 -right-3 w-2/3 h-px bg-gold hidden lg:block" />
           </motion.figure>
         </div>
 
-        {/* Bottom — credibility band: Mesut'un gerçek unvanları */}
+        {/* ───── ROW 2: Görevler & Üyelikler (full-width, separated) ───── */}
         <motion.div
-          {...(reduce ? {} : fade(1.05))}
+          {...(reduce ? {} : fade(1.1))}
           className="mt-[clamp(3rem,6vw,5rem)] pt-7 border-t border-rule"
         >
           <div
-            className="font-mono uppercase text-ink-mute mb-5"
+            className="font-mono uppercase text-ink-mute mb-5 flex items-center gap-3"
             style={{ fontSize: '0.7rem', letterSpacing: '0.28em', fontWeight: 600 }}
           >
             <span className="text-gold">—</span> Görevler &amp; Üyelikler
