@@ -5,22 +5,6 @@ import { nav, site } from '../data/site';
 interface Props { current?: string; }
 const { current = '/' } = Astro.props;
 ---
-<!-- Top bar (noir, gold info strip) -->
-<div class="bg-noir-soft text-paper/80">
-  <div class="shell flex justify-between items-center py-2.5 font-mono uppercase flex-wrap gap-2"
-       style="font-size:0.66rem; letter-spacing:0.22em;">
-    <div class="flex gap-5 items-center">
-      <span class="text-gold-soft">EST. {site.established}</span>
-      <span class="hidden md:inline">{site.city}</span>
-      <span class="hidden lg:inline opacity-70">{site.hours}</span>
-    </div>
-    <div class="flex gap-5 items-center">
-      <a href={`tel:${site.phone.replace(/\s+/g,'')}`} class="hover:text-gold-soft transition hidden sm:inline">{site.phone}</a>
-      <a href={`mailto:${site.email}`} class="hover:text-gold-soft transition">{site.email}</a>
-    </div>
-  </div>
-</div>
-
 <!-- Main nav (noir, dominant) -->
 <header
   id="masthead"
