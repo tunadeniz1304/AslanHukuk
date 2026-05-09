@@ -3,6 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Reveal from '../components/react/Reveal.tsx';
 import ContactForm from '../components/react/ContactForm.tsx';
 import { site } from '../data/site';
+
+const isReal = (v: string) => v && !v.startsWith('TODO');
+const phoneClean    = isReal(site.phone)    ? site.phone.replace(/\s+/g, '')    : '';
+const phoneAltClean = isReal(site.phoneAlt) ? site.phoneAlt.replace(/\s+/g, '') : '';
 ---
 <Layout title="İletişim — Aslan Hukuk Bürosu" current="/iletisim">
 
@@ -20,7 +24,7 @@ import { site } from '../data/site';
       </Reveal>
       <Reveal client:visible delay={0.2}>
         <p class="lead mt-8" style="max-width: 50ch;">
-          İlk görüşmemiz takdire bağlı ve gizlidir. Telefonla, e-posta ile veya aşağıdaki formla bize ulaşabilirsiniz.
+          İlk görüşme takdire bağlı ve gizlidir. Telefonla, e-posta ile veya aşağıdaki formla doğrudan iletişime geçebilirsiniz.
         </p>
       </Reveal>
     </div>
@@ -35,25 +39,38 @@ import { site } from '../data/site';
           <span class="eyebrow">001 — Bilgi</span>
           <h2 class="h2 mt-6 mb-8" style="max-width: 14ch;">Doğrudan ulaşın.</h2>
           <ul class="border-t border-rule list-none p-0 m-0">
+            {isReal(site.address) && (
+              <li class="border-b border-rule py-6">
+                <div class="mono-meta text-ink-mute mb-2">ADRES</div>
+                <div class="font-display text-ink" style="font-size:1.2rem; line-height:1.4; font-weight:500;">{site.address}</div>
+              </li>
+            )}
+            {isReal(site.phone) && (
+              <li class="border-b border-rule py-6">
+                <div class="mono-meta text-ink-mute mb-2">TELEFON</div>
+                <a href={`tel:${phoneClean}`} class="font-display text-ink block hover:text-gold transition" style="font-size:1.2rem; font-weight:500;">{site.phone}</a>
+                {isReal(site.phoneAlt) && (
+                  <a href={`tel:${phoneAltClean}`} class="font-display text-ink-soft block hover:text-gold transition mt-1" style="font-size:1.05rem; font-weight:500;">{site.phoneAlt}</a>
+                )}
+              </li>
+            )}
+            {isReal(site.email) && (
+              <li class="border-b border-rule py-6">
+                <div class="mono-meta text-ink-mute mb-2">E-POSTA</div>
+                <a href={`mailto:${site.email}`} class="font-display text-ink block hover:text-gold transition" style="font-size:1.2rem; font-weight:500;">{site.email}</a>
+                {isReal(site.emailBooking) && (
+                  <a href={`mailto:${site.emailBooking}`} class="font-display text-ink-soft block hover:text-gold transition mt-1" style="font-size:1.05rem; font-weight:500;">{site.emailBooking}</a>
+                )}
+              </li>
+            )}
             <li class="border-b border-rule py-6">
-              <div class="font-mono uppercase text-ink-mute mb-2" style="font-size:0.66rem; letter-spacing:0.28em;">Adres</div>
-              <div class="font-serif" style="font-size:1.2rem; line-height:1.4;">{site.address}</div>
-            </li>
-            <li class="border-b border-rule py-6">
-              <div class="font-mono uppercase text-ink-mute mb-2" style="font-size:0.66rem; letter-spacing:0.28em;">Telefon</div>
-              <a href={`tel:${site.phone.replace(/\s+/g,'')}`} class="font-serif block hover:text-gold transition" style="font-size:1.2rem;">{site.phone}</a>
-              <a href={`tel:${site.phoneAlt.replace(/\s+/g,'')}`} class="font-serif block text-ink-soft hover:text-gold transition" style="font-size:1.05rem;">{site.phoneAlt}</a>
-            </li>
-            <li class="border-b border-rule py-6">
-              <div class="font-mono uppercase text-ink-mute mb-2" style="font-size:0.66rem; letter-spacing:0.28em;">E-posta</div>
-              <a href={`mailto:${site.email}`} class="font-serif block hover:text-gold transition" style="font-size:1.2rem;">{site.email}</a>
-              <a href={`mailto:${site.emailBooking}`} class="font-serif block text-ink-soft hover:text-gold transition" style="font-size:1.05rem;">{site.emailBooking}</a>
-            </li>
-            <li class="border-b border-rule py-6">
-              <div class="font-mono uppercase text-ink-mute mb-2" style="font-size:0.66rem; letter-spacing:0.28em;">Çalışma</div>
-              <div class="font-serif" style="font-size:1.2rem;">{site.hours}</div>
+              <div class="mono-meta text-ink-mute mb-2">ÇALIŞMA</div>
+              <div class="font-display text-ink" style="font-size:1.2rem; font-weight:500;">{site.hours}</div>
               <div class="font-body italic text-ink-mute mt-1" style="font-size:0.95rem;">Cumartesi randevu ile</div>
             </li>
+            {!isReal(site.address) && !isReal(site.phone) && !isReal(site.email) && (
+              <li class="py-6 mono-meta text-gold-deep">İLETİŞİM BİLGİLERİ KISA SÜREDE EKLENECEK.</li>
+            )}
           </ul>
         </aside>
       </Reveal>
