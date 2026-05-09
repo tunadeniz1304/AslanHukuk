@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Reveal from '../components/react/Reveal.tsx';
+import ContactForm from '../components/react/ContactForm.tsx';
+import { site } from '../data/site';
+---
+<Layout title="İletişim — Aslan Hukuk Bürosu" current="/iletisim">
+
+  <section class="border-b border-rule" style="padding: clamp(4rem,7vw,7rem) 0 clamp(3rem,5vw,5rem);">
+    <div class="shell">
+      <Reveal client:visible>
+        <div class="font-mono uppercase text-ink-mute mb-6" style="font-size:0.7rem; letter-spacing:0.28em;">Anasayfa / İletişim</div>
+      </Reveal>
+      <Reveal client:visible delay={0.1}>
+        <h1 class="display" style="max-width: 13ch;">Önce bir<br/><em style="color:#8a6b2a; font-style:italic;">görüşme</em>.</h1>
+      </Reveal>
+      <Reveal client:visible delay={0.2}>
+        <p class="lead mt-8" style="max-width: 50ch;">
+          İlk görüşmemiz takdire bağlı ve gizlidir. Telefonla, e-posta ile veya aşağıdaki formla bize ulaşabilirsiniz.
+        </p>
+      </Reveal>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-start">
+
+      <!-- Meta -->
+      <Reveal client:visible>
+        <aside>
+          <span class="eyebrow">001 — Bilgi</span>
+          <h2 class="h2 mt-6 mb-8" style="max-width: 14ch;">Doğrudan ulaşın.</h2>
+          <ul class="border-t border-rule list-none p-0 m-0">
+            <li class="border-b border-rule py-6">
+              <div class="font-mono uppercase text-ink-mute mb-2" style="font-size:0.66rem; letter-spacing:0.28em;">Adres</div>
+              <div class="font-serif" style="font-size:1.2rem; line-height:1.4;">{site.address}</div>
+            </li>
+            <li class="border-b border-rule py-6">
+              <div class="font-mono uppercase text-ink-mute mb-2" style="font-size:0.66rem; letter-spacing:0.28em;">Telefon</div>
+              <a href={`tel:${site.phone.replace(/\s+/g,'')}`} class="font-serif block hover:text-gold transition" style="font-size:1.2rem;">{site.phone}</a>
+              <a href={`tel:${site.phoneAlt.replace(/\s+/g,'')}`} class="font-serif block text-ink-soft hover:text-gold transition" style="font-size:1.05rem;">{site.phoneAlt}</a>
+            </li>
+            <li class="border-b border-rule py-6">
+              <div class="font-mono uppercase text-ink-mute mb-2" style="font-size:0.66rem; letter-spacing:0.28em;">E-posta</div>
+              <a href={`mailto:${site.email}`} class="font-serif block hover:text-gold transition" style="font-size:1.2rem;">{site.email}</a>
+              <a href={`mailto:${site.emailBooking}`} class="font-serif block text-ink-soft hover:text-gold transition" style="font-size:1.05rem;">{site.emailBooking}</a>
+            </li>
+            <li class="border-b border-rule py-6">
+              <div class="font-mono uppercase text-ink-mute mb-2" style="font-size:0.66rem; letter-spacing:0.28em;">Çalışma</div>
+              <div class="font-serif" style="font-size:1.2rem;">{site.hours}</div>
+              <div class="font-body italic text-ink-mute mt-1" style="font-size:0.95rem;">Cumartesi randevu ile</div>
+            </li>
+          </ul>
+        </aside>
+      </Reveal>
+
+      <!-- Form -->
+      <Reveal client:visible delay={0.1}>
+        <div>
+          <span class="eyebrow">002 — Form</span>
+          <h2 class="h2 mt-6 mb-3" style="max-width: 16ch;">Görüşme talebi.</h2>
+          <p class="font-body italic text-ink-mute mb-10" style="font-size: 1.05rem; max-width: 48ch;">
+            Aşağıdaki bilgileri paylaşın; en kısa sürede tarafınıza dönüş yapalım. Tüm bilgileriniz mesleki sır kapsamında korunur.
+          </p>
+          <ContactForm client:load />
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="border-y border-rule">
+    <iframe
+      title="Aslan Hukuk Bürosu Konum"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=29.005%2C41.075%2C29.025%2C41.085&layer=mapnik"
+      style="width:100%; height:480px; border:0; display:block; filter: grayscale(85%) contrast(1.05);"
+      loading="lazy"
+    ></iframe>
+  </section>
+
+</Layout>
