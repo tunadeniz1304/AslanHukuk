@@ -142,12 +142,11 @@ export default function Hero() {
           {/* RIGHT — Portrait, viewport-capped height, never overflows */}
           <motion.figure
             {...(reduce ? {} : fade(0.4))}
-            className="relative m-0 lg:max-h-[78vh] flex flex-col"
+            className="relative m-0 lg:max-h-[78vh] flex flex-col group/portrait"
           >
             <div
               className="bg-noir overflow-hidden relative w-full"
               style={{
-                // Cap height to viewport — image will fit on any laptop screen
                 aspectRatio: '4 / 5',
                 maxHeight: 'clamp(420px, 72vh, 760px)',
               }}
@@ -160,11 +159,21 @@ export default function Hero() {
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                className="absolute inset-0 w-full h-full transition duration-700 hover:scale-[1.02]"
+                className="absolute inset-0 w-full h-full transition-transform duration-500 ease-editorial group-hover/portrait:scale-[1.06]"
                 style={{ objectFit: 'cover', objectPosition: 'center top' }}
               />
+              {/* Hover gold tint overlay */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover/portrait:opacity-100"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(184,145,80,0.10) 0%, rgba(184,145,80,0) 40%, rgba(14,12,8,0.25) 100%)',
+                  mixBlendMode: 'multiply',
+                }}
+              />
               {/* Bottom caption strip */}
-              <figcaption className="absolute left-0 right-0 bottom-0 bg-noir text-paper px-5 py-4 flex items-end justify-between gap-4">
+              <figcaption className="absolute left-0 right-0 bottom-0 bg-noir text-paper px-5 py-4 flex items-end justify-between gap-4 z-10">
                 <div>
                   <div
                     className="font-mono uppercase text-gold-soft mb-1"
@@ -187,8 +196,8 @@ export default function Hero() {
                 </div>
               </figcaption>
             </div>
-            {/* Gold offset rule (decorative) */}
-            <div className="absolute -bottom-3 -right-3 w-2/3 h-px bg-gold hidden lg:block" />
+            {/* Gold offset rule (decorative) — animates on hover */}
+            <div className="absolute -bottom-3 -right-3 h-px bg-gold hidden lg:block transition-all duration-500 ease-editorial w-2/3 group-hover/portrait:w-[calc(100%+0.75rem)]" />
           </motion.figure>
         </div>
 
