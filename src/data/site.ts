@@ -5,19 +5,29 @@ export const site = {
   attorney: {
     name: 'Av. Mesut Aslan',
     role: 'Kurucu Avukat',
-    education: 'TODO_UNIVERSITE_ve_YIL',          // örn: 'İstanbul Üniversitesi Hukuk Fakültesi · 2003'
-    barRegistration: 'TODO_BARO_ve_SICIL',        // örn: 'İstanbul Barosu · Sicil No: 12345'
+    education: 'Çankaya Üniversitesi Hukuk Fakültesi · 2022',
+    barRegistration: 'Ankara Barosu',
     photo: '/photos/mesut-aslan.png',
+    titles: [
+      { label: 'Ankara Barosu KKTC Başkanı', short: 'KKTC BAŞKANI' },
+      { label: 'Çankayalı Hukukçular Derneği Başkan Vekili', short: 'BAŞKAN VEKİLİ' },
+    ],
   },
-  established: 'TODO_KURULUS_YILI',               // örn: '2003'
-  city: 'İstanbul',
-  address: 'TODO_TAM_ADRES',                      // örn: 'Levent Mah. Büyükdere Cad. No: 120, K:5 Şişli/İstanbul'
-  phone: 'TODO_TELEFON',                          // örn: '+90 212 555 12 34'
-  phoneAlt: 'TODO_TELEFON_2_OPSIYONEL',           // boş bırakılabilir
-  whatsapp: 'TODO_WHATSAPP_NUMARASI',             // örn: '905321234567' (başında + yok, boşluk yok)
-  email: 'TODO_EMAIL',                            // örn: 'info@aslanhukuk.com.tr'
-  emailBooking: 'TODO_RANDEVU_EMAIL_OPSIYONEL',   // boş bırakılabilir
+  established: '2025',
+  city: 'Ankara',
+  district: 'Sincan',
+  address: 'Sincan · Ankara',                 // tam adres alınınca güncellenecek
+  fullAddress: 'TODO_TAM_ADRES',              // sen verince doldurulacak
+  phone: '+90 544 871 47 06',
+  phoneAlt: '',
+  whatsapp: '905448714706',
+  email: '',                                   // henüz yok
+  emailBooking: '',
   hours: 'Pzt — Cum · 09:00 — 18:00',
+  social: {
+    linkedin:  'https://www.linkedin.com/in/mesut-aslan-8757432b4/',
+    instagram: 'https://www.instagram.com/avmesutaslan',
+  },
 };
 
 export const nav = [
@@ -102,34 +112,37 @@ export const practices = [
   },
 ] as const;
 
-// Sayılar — gerçek değerler kullanıcıdan alınınca güncellenecek
-// TODO: Mesut Aslan'ın yıl tecrübesi, dosya sayısı vb. doğrulanacak
-export const stats = [
-  { num: 'TODO_YIL',       label: 'Yıllık Tecrübe' },
-  { num: 'TODO_DOSYA',     label: 'Sonuçlanan Dosya' },
-  { num: '6',              label: 'Uzmanlık Alanı' },
-  { num: 'Tam',            label: 'Gizlilik Esası' },
-];
+// Yaklaşım (verdicts yerine geçer — büro yeni olduğu için 'kazanılmış davalar' yerine pratiğin yapı taşları)
+export const approach = [
+  {
+    no: '01',
+    title: 'Dinleme',
+    desc: 'İlk görüşme, sizi ve dosyanızı tanımak içindir. Sürecin başından sonuna ne bekleyeceğinizi açık ve dürüst şekilde paylaşırım.',
+  },
+  {
+    no: '02',
+    title: 'Strateji',
+    desc: 'Hukuki çerçeveyi netleştirir, alternatif yolları değerlendirir ve sizinle birlikte gerçekçi bir yol haritası belirleriz.',
+  },
+  {
+    no: '03',
+    title: 'Temsil',
+    desc: 'Dosyanızı kendim yönetir, tüm aşamalarda sizi süreçten haberdar ederim. Müvekkil-avukat ilişkisinde aracı yoktur.',
+  },
+] as const;
 
-// Verdicts (seçilmiş sonuçlar) — placeholder, gerçek dosyalardan anonimleştirilmiş
-// TODO: Mesut Aslan'dan kendi sonuçlarını alıp güncelle
-export const verdicts = [
+// Pratiğin temel özellikleri (stats yerine geçer — sayı yerine kalite)
+export const features = [
   {
-    year: 'TODO_YIL',
-    area: 'Ticaret',
-    lede: 'TODO: Anonimleştirilmiş dava özeti — sonuç ve sürecin kısa açıklaması.',
-    outcome: 'TODO_SONUC',
+    label: 'Bireysel Pratik',
+    desc:  'Dosyanız kalabalık bir kadroya değil; doğrudan avukatınıza emanettir.',
   },
   {
-    year: 'TODO_YIL',
-    area: 'İdare',
-    lede: 'TODO: Anonimleştirilmiş dava özeti.',
-    outcome: 'TODO_SONUC',
+    label: '6 Uzmanlık Alanı',
+    desc:  'Aile, ticaret, iş, ceza, gayrimenkul ve idare hukuku.',
   },
   {
-    year: 'TODO_YIL',
-    area: 'İş Hukuku',
-    lede: 'TODO: Anonimleştirilmiş dava özeti.',
-    outcome: 'TODO_SONUC',
+    label: 'Tam Gizlilik',
+    desc:  'Müvekkil sırrı, hukukun verdiği güvencenin de ötesinde korunur.',
   },
 ];
