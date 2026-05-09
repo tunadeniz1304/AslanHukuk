@@ -170,24 +170,25 @@
   .ed-btn.on-dark { @apply bg-gold text-noir border-gold; }
   .ed-btn.on-dark:hover { @apply bg-paper border-paper text-noir; }
 
-  /* Hero portrait frame — viewport-aware sizing
-     - Small viewports: shorter aspect (4/4.2), strict height cap so caption strip stays in view
-     - Large viewports: taller editorial 4/5, more dominant
+  /* Hero portrait frame — taller editorial portrait, body fully visible
+     Aspect ratio fixed at 4:5 (classic portrait); height scales generously with viewport
+     so the subject's full upper body is in frame, caption strip stays at the bottom edge.
   */
   .hero-portrait-frame {
-    aspect-ratio: 4 / 4.4;
-    max-height: 62vh;
+    aspect-ratio: 4 / 5;
+    max-height: 78vh;
+    min-height: 520px;
   }
-  @media (min-width: 1024px) and (min-height: 800px) {
+  @media (min-width: 1280px) {
     .hero-portrait-frame {
-      aspect-ratio: 4 / 4.8;
-      max-height: 72vh;
+      max-height: 86vh;
+      min-height: 620px;
     }
   }
-  @media (min-width: 1280px) and (min-height: 900px) {
+  @media (min-width: 1536px) {
     .hero-portrait-frame {
-      aspect-ratio: 4 / 5;
-      max-height: 78vh;
+      max-height: 90vh;
+      min-height: 720px;
     }
   }
 }
