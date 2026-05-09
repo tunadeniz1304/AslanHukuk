@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Reveal from '../components/react/Reveal.tsx';
+import { practices } from '../data/site';
+---
+<Layout title="Çalışma Alanları — Aslan Hukuk Bürosu" current="/calisma-alanlari">
+
+  <section class="border-b border-rule" style="padding: clamp(4rem,7vw,7rem) 0 clamp(3rem,5vw,5rem);">
+    <div class="shell">
+      <Reveal client:visible>
+        <div class="font-mono uppercase text-ink-mute mb-6" style="font-size:0.7rem; letter-spacing:0.28em;">Anasayfa / Çalışma Alanları</div>
+      </Reveal>
+      <Reveal client:visible delay={0.1}>
+        <h1 class="display" style="max-width: 14ch;">Altı alan,<br/><em style="color:#8a6b2a; font-style:italic;">tek</em> standart.</h1>
+      </Reveal>
+      <Reveal client:visible delay={0.2}>
+        <p class="lead mt-8" style="max-width: 52ch;">
+          Her alan kendi uzmanına; her uzman kendi dosyasına. Yüzeysel pratiğin müvekkile maliyeti, biz tarafından kabul edilemez.
+        </p>
+      </Reveal>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      {practices.map((p, i) => (
+        <article id={p.slug} class={`grid grid-cols-1 lg:grid-cols-[80px_1fr] gap-x-12 gap-y-8 ${i < practices.length - 1 ? 'border-b border-rule' : ''}`} style="padding: clamp(3rem,5vw,5rem) 0;">
+          <Reveal client:visible>
+            <div class="font-mono text-gold" style="font-size:0.8rem; letter-spacing:0.22em;">{p.no}</div>
+          </Reveal>
+
+          <div>
+            <Reveal client:visible delay={0.05}>
+              <h2 class="h1 mb-8" style="max-width: 18ch;">{p.name}</h2>
+            </Reveal>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-2">
+              <Reveal client:visible delay={0.1}>
+                <p class="lead m-0" style="max-width: 42ch;">{p.desc}</p>
+              </Reveal>
+
+              <Reveal client:visible delay={0.18}>
+                <ul class="border-t border-rule list-none p-0 m-0">
+                  {p.items.map((it) => (
+                    <li class="flex items-baseline gap-3 py-4 border-b border-rule font-body" style="font-size:1.05rem; color:#2a2a2a;">
+                      <span class="font-mono text-gold" style="font-size:0.85rem;">—</span>
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </div>
+
+            <Reveal client:visible delay={0.25}>
+              <a href="/iletisim" class="ed-link mt-10 inline-flex">Bu alanda görüşme talep et</a>
+            </Reveal>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="bg-noir text-paper section">
+    <div class="shell flex flex-col md:flex-row md:justify-between md:items-end gap-10">
+      <Reveal client:visible>
+        <h2 class="font-serif" style="font-size: clamp(2.2rem,4vw,3.4rem); line-height:1.06; letter-spacing:-0.02em; max-width: 18ch; color:#f5f1e8;">
+          Aradığınız alan listede yoksa<br/>
+          <em style="color:#b59456; font-style:italic;">hâlâ konuşmaya değer.</em>
+        </h2>
+      </Reveal>
+      <Reveal client:visible delay={0.1}>
+        <a href="/iletisim" class="ed-btn on-dark">Görüşme Talep Et</a>
+      </Reveal>
+    </div>
+  </section>
+
+</Layout>
