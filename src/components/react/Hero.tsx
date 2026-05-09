@@ -119,10 +119,10 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Concrete sub-headline — bireysel müvekkil için somut bilgi */}
+            {/* Concrete sub-headline — primary informational layer (ink) */}
             <motion.p
               {...(reduce ? {} : fade(0.78))}
-              className="font-display text-ink-soft"
+              className="font-display text-ink"
               style={{
                 fontSize: 'clamp(1.15rem, 1.5vw, 1.4rem)',
                 lineHeight: 1.4,
@@ -133,13 +133,13 @@ export default function Hero() {
                 maxWidth: '32ch',
               }}
             >
-              Aile, ticaret, iş, ceza, gayrimenkul ve idare hukukunda <span style={{ color: '#8a6b2a' }}>Ankara</span>'da bireysel temsil.
+              Aile, ticaret, iş, ceza, gayrimenkul ve idare hukukunda Ankara'da bireysel temsil.
             </motion.p>
 
-            {/* Standfirst — niyet/manifesto seviyesi */}
+            {/* Standfirst — secondary manifesto (ink-mute, lighter) */}
             <motion.p
               {...(reduce ? {} : fade(0.88))}
-              className="font-body text-ink-soft"
+              className="font-body text-ink-mute"
               style={{
                 fontSize: 'clamp(1rem, 1.15vw, 1.1rem)',
                 lineHeight: 1.6,
@@ -194,9 +194,9 @@ export default function Hero() {
                   mixBlendMode: 'multiply',
                 }}
               />
-              {/* Top-right corner ribbon (location) */}
+              {/* Top-right corner ribbon (location) — gold-bright bg matches caption strip ink rhythm */}
               <div
-                className="absolute top-0 right-0 bg-gold text-noir font-mono uppercase z-20"
+                className="absolute top-0 right-0 bg-gold-bright text-noir font-mono uppercase z-20"
                 style={{ fontSize: '0.62rem', letterSpacing: '0.22em', fontWeight: 700, padding: '0.5rem 0.85rem' }}
               >
                 ANKARA · TÜRKİYE
@@ -218,8 +218,8 @@ export default function Hero() {
                 </div>
               </figcaption>
             </div>
-            {/* Gold offset rule (decorative) — animates on hover */}
-            <div className="absolute -bottom-3 -right-3 h-px bg-gold hidden lg:block transition-all duration-500 ease-editorial w-2/3 group-hover/portrait:w-[calc(100%+0.75rem)]" />
+            {/* Gold offset rule (decorative) — appears only on hover, surprise+delight */}
+            <div className="absolute -bottom-3 -right-3 h-px bg-gold hidden lg:block transition-all duration-500 ease-editorial w-0 group-hover/portrait:w-[calc(100%+0.75rem)]" />
           </motion.figure>
         </div>
 
@@ -229,12 +229,12 @@ export default function Hero() {
           className="mt-[clamp(4rem,8vw,7rem)] pt-7 border-t border-rule"
         >
           <div
-            className="font-mono uppercase text-ink-mute mb-5 flex items-center gap-3"
-            style={{ fontSize: '0.7rem', letterSpacing: '0.28em', fontWeight: 600 }}
+            className="font-mono uppercase text-ink-mute mb-7 flex items-center gap-3"
+            style={{ fontSize: '0.72rem', letterSpacing: '0.28em', fontWeight: 600 }}
           >
             <span className="text-gold">—</span> Görevler &amp; Üyelikler
           </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 list-none p-0 m-0">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5 list-none p-0 m-0">
             {TITLES.map((t, i) => (
               <li
                 key={i}
@@ -243,7 +243,7 @@ export default function Hero() {
               >
                 <span
                   className="font-mono text-gold flex-shrink-0"
-                  style={{ fontSize: '0.7rem', letterSpacing: '0.18em', fontWeight: 600 }}
+                  style={{ fontSize: '0.8rem', letterSpacing: '0.18em', fontWeight: 700 }}
                 >
                   0{i + 1}
                 </span>

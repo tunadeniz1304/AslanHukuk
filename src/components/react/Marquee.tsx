@@ -20,7 +20,7 @@ export default function Marquee({ items, speed = 60 }: Props) {
         {loop.map((it, i) => (
           <span key={i} className="inline-flex items-center gap-16 text-ink">
             {it}
-            <span className="text-rule not-italic" style={{ fontSize: '0.55em' }}>✦</span>
+            <span className="not-italic" style={{ fontSize: '0.55em', color: '#d8d2c4' }}>✦</span>
           </span>
         ))}
       </motion.div>
