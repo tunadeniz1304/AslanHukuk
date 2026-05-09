@@ -50,7 +50,7 @@ export default function Hero() {
                   initial="hidden"
                   animate="show"
                   custom={i}
-                  style={i === 2 ? { fontStyle: 'italic', color: '#8a6b2a' } : undefined}
+                  style={i === 2 ? { fontStyle: 'italic', color: '#8a6b2a', fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 0' } : undefined}
                 >
                   {w}
                 </motion.span>

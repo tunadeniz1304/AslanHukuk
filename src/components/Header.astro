@@ -5,68 +5,90 @@ import { nav, site } from '../data/site';
 interface Props { current?: string; }
 const { current = '/' } = Astro.props;
 ---
-<div class="border-b border-rule bg-paper">
-  <div class="shell flex justify-between items-center py-2 font-mono uppercase text-ink-mute" style="font-size:0.66rem; letter-spacing:0.22em;">
-    <div class="flex gap-4">
-      <span>EST. {site.established}</span>
+<!-- Top bar (noir, gold info strip) -->
+<div class="bg-noir-soft text-paper/80">
+  <div class="shell flex justify-between items-center py-2.5 font-mono uppercase flex-wrap gap-2"
+       style="font-size:0.66rem; letter-spacing:0.22em;">
+    <div class="flex gap-5 items-center">
+      <span class="text-gold-soft">EST. {site.established}</span>
       <span class="hidden md:inline">{site.city}</span>
+      <span class="hidden lg:inline opacity-70">{site.hours}</span>
     </div>
-    <div class="flex gap-4 items-center">
-      <span class="hidden sm:inline">{site.hours}</span>
-      <a href={`mailto:${site.email}`} class="hover:text-ink transition">{site.email}</a>
+    <div class="flex gap-5 items-center">
+      <a href={`tel:${site.phone.replace(/\s+/g,'')}`} class="hover:text-gold-soft transition hidden sm:inline">{site.phone}</a>
+      <a href={`mailto:${site.email}`} class="hover:text-gold-soft transition">{site.email}</a>
     </div>
   </div>
 </div>
 
+<!-- Main nav (noir, dominant) -->
 <header
   id="masthead"
-  class="sticky top-0 z-50 bg-paper/95 supports-[backdrop-filter]:backdrop-blur-md border-b border-rule"
+  class="sticky top-0 z-50 bg-noir text-paper border-b border-paper/10"
 >
   <div class="shell grid grid-cols-[1fr_auto_1fr] items-center py-4 gap-4 max-md:grid-cols-[1fr_auto]">
     <a href="/" class="inline-flex items-center gap-3 group" aria-label="Aslan Hukuk Bürosu">
-      <Monogram class="text-ink transition group-hover:text-gold" size={38} />
+      <Monogram class="text-gold transition group-hover:text-gold-soft" size={42} />
       <span class="leading-tight">
-        <span class="block font-serif text-[1.35rem]" style="letter-spacing:-0.01em;">Aslan Hukuk</span>
-        <span class="block font-mono uppercase text-ink-mute mt-1" style="font-size:0.6rem;letter-spacing:0.32em;">Bürosu &amp; Danışmanlık</span>
+        <span class="block font-display text-[1.45rem] text-paper" style="letter-spacing:-0.012em; font-weight: 500;">Aslan Hukuk</span>
+        <span class="block font-mono uppercase text-gold-soft mt-1" style="font-size:0.6rem;letter-spacing:0.32em;">Bürosu &amp; Danışmanlık</span>
       </span>
     </a>
 
-    <nav id="primary-nav" class="justify-self-center hidden md:flex gap-8" aria-label="Birincil">
+    <nav id="primary-nav" class="justify-self-center hidden md:flex gap-1 lg:gap-2" aria-label="Birincil">
       {nav.map((item) => (
         <a
           href={item.href}
-          class={`font-mono uppercase pb-1 border-b transition ${
+          class={`relative font-mono uppercase px-3 lg:px-4 py-2 transition ${
             current === item.href
-              ? 'text-ink border-ink'
-              : 'text-ink-soft border-transparent hover:text-ink'
+              ? 'text-gold-soft'
+              : 'text-paper/85 hover:text-paper'
           }`}
-          style="font-size:0.7rem;letter-spacing:0.22em;"
-        >{item.label}</a>
+          style="font-size:0.72rem;letter-spacing:0.22em; font-weight:500;"
+        >
+          {item.label}
+          {current === item.href && (
+            <span class="absolute left-3 right-3 lg:left-4 lg:right-4 bottom-0 h-px bg-gold"></span>
+          )}
+        </a>
       ))}
     </nav>
 
-    <div class="justify-self-end flex items-center gap-4">
-      <a href={`tel:${site.phone.replace(/\s+/g,'')}`} class="hidden lg:inline font-mono uppercase text-ink-soft hover:text-ink transition" style="font-size:0.7rem;letter-spacing:0.22em;">{site.phone}</a>
-      <a href="/iletisim" class="hidden md:inline-block ed-btn" style="padding:0.85rem 1.5rem;">Randevu</a>
-      <button id="mobile-toggle" class="md:hidden w-10 h-10 border border-rule grid place-items-center" aria-label="Menü" aria-expanded="false">
-        <span class="block w-4 h-px bg-ink mb-1.5"></span>
-        <span class="block w-4 h-px bg-ink"></span>
+    <div class="justify-self-end flex items-center gap-3 md:gap-4">
+      <a href={`tel:${site.phone.replace(/\s+/g,'')}`}
+         class="hidden xl:inline font-mono uppercase text-paper/85 hover:text-gold-soft transition"
+         style="font-size:0.72rem;letter-spacing:0.22em; font-weight:500;">{site.phone}</a>
+
+      <a href="/iletisim"
+         class="hidden md:inline-block bg-gold text-noir font-mono uppercase border border-gold hover:bg-paper hover:border-paper transition"
+         style="font-size:0.72rem;letter-spacing:0.22em; font-weight:600; padding:0.85rem 1.5rem;">RANDEVU</a>
+
+      <button id="mobile-toggle"
+              class="md:hidden w-11 h-11 border border-paper/30 grid place-items-center hover:border-gold transition"
+              aria-label="Menü" aria-expanded="false">
+        <span class="relative block w-5 h-px bg-paper before:content-[''] before:absolute before:left-0 before:right-0 before:h-px before:bg-paper before:-top-[6px] after:content-[''] after:absolute after:left-0 after:right-0 after:h-px after:bg-paper after:top-[6px]"></span>
       </button>
     </div>
   </div>
 
-  <nav id="mobile-nav" class="md:hidden hidden border-t border-rule bg-paper">
-    <div class="shell flex flex-col py-4">
+  <!-- Mobile drawer -->
+  <nav id="mobile-nav" class="md:hidden hidden border-t border-paper/10 bg-noir">
+    <div class="shell flex flex-col py-3">
       {nav.map((item) => (
         <a
           href={item.href}
-          class={`font-mono uppercase py-3 border-b border-rule-soft last:border-b-0 ${
-            current === item.href ? 'text-ink' : 'text-ink-soft'
+          class={`font-mono uppercase py-4 border-b border-paper/10 last:border-b-0 transition ${
+            current === item.href ? 'text-gold-soft' : 'text-paper/85 hover:text-gold-soft'
           }`}
-          style="font-size:0.78rem;letter-spacing:0.22em;"
+          style="font-size:0.78rem;letter-spacing:0.22em; font-weight:500;"
         >{item.label}</a>
       ))}
-      <a href="/iletisim" class="ed-btn mt-4 text-center">Randevu Al</a>
+      <a href="/iletisim"
+         class="text-center bg-gold text-noir font-mono uppercase mt-4 py-4 hover:bg-paper transition"
+         style="font-size:0.78rem;letter-spacing:0.22em; font-weight:600;">RANDEVU AL</a>
+      <a href={`tel:${site.phone.replace(/\s+/g,'')}`}
+         class="text-center font-mono uppercase mt-2 py-3 text-paper/75"
+         style="font-size:0.72rem;letter-spacing:0.22em;">{site.phone}</a>
     </div>
   </nav>
 </header>
@@ -76,8 +98,8 @@ const { current = '/' } = Astro.props;
   const m = document.getElementById('mobile-nav');
   if (t && m) {
     t.addEventListener('click', () => {
-      const open = m.classList.toggle('hidden') === false;
-      t.setAttribute('aria-expanded', String(open));
+      const isHidden = m.classList.toggle('hidden');
+      t.setAttribute('aria-expanded', String(!isHidden));
     });
   }
 </script>
