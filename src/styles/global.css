@@ -142,18 +142,32 @@
 
   /* ----- CTAs ----- */
   .ed-link {
-    @apply font-mono uppercase inline-flex items-baseline gap-2 text-ink;
+    @apply font-mono uppercase inline-flex items-center gap-2.5 text-ink relative;
     font-size: 0.72rem;
     letter-spacing: 0.22em;
-    font-weight: 500;
+    font-weight: 600;
     padding-bottom: 4px;
+    padding-left: 0.85rem;
     border-bottom: 1px solid currentColor;
-    transition: gap var(--t-fast), color var(--t-fast);
+    transition: gap var(--t-fast), color var(--t-fast), padding-left var(--t-fast);
   }
-  .ed-link::after { content: "→"; @apply font-display; font-size: 1rem; transition: transform var(--t-fast); }
-  .ed-link:hover { gap: 0.95rem; @apply text-gold; }
+  .ed-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--gold-bullet, #8a6b2a);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: transform var(--t-fast), background var(--t-fast);
+  }
+  .ed-link::after { content: "→"; @apply font-display; font-size: 1.05rem; transition: transform var(--t-fast); }
+  .ed-link:hover { gap: 1.1rem; padding-left: 1.1rem; @apply text-gold; }
+  .ed-link:hover::before { transform: translateY(-50%) scale(1.4); }
   .ed-link:hover::after { transform: translateX(4px); }
-  .ed-link.on-dark { @apply text-paper; }
+  .ed-link.on-dark { @apply text-paper; --gold-bullet: #b89150; }
   .ed-link.on-dark:hover { @apply text-gold-soft; }
 
   .ed-btn {
