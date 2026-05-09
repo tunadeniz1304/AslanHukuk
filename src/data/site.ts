@@ -1,14 +1,22 @@
 export const site = {
   name: 'Aslan Hukuk Bürosu',
   shortName: 'Aslan Hukuk',
-  established: '2003',
+  // Tek avukat — kurucu ve sahibi
+  attorney: {
+    name: 'Av. Mesut Aslan',
+    role: 'Kurucu Avukat',
+    education: 'TODO_UNIVERSITE_ve_YIL',          // örn: 'İstanbul Üniversitesi Hukuk Fakültesi · 2003'
+    barRegistration: 'TODO_BARO_ve_SICIL',        // örn: 'İstanbul Barosu · Sicil No: 12345'
+    photo: '/photos/mesut-aslan.png',
+  },
+  established: 'TODO_KURULUS_YILI',               // örn: '2003'
   city: 'İstanbul',
-  address: 'Levent Mah. Büyükdere Cad. No: 120, K:5 Şişli/İstanbul',
-  phone: '+90 212 555 12 34',
-  phoneAlt: '+90 532 123 45 67',
-  whatsapp: '905321234567',
-  email: 'info@aslanhukuk.com.tr',
-  emailBooking: 'randevu@aslanhukuk.com.tr',
+  address: 'TODO_TAM_ADRES',                      // örn: 'Levent Mah. Büyükdere Cad. No: 120, K:5 Şişli/İstanbul'
+  phone: 'TODO_TELEFON',                          // örn: '+90 212 555 12 34'
+  phoneAlt: 'TODO_TELEFON_2_OPSIYONEL',           // boş bırakılabilir
+  whatsapp: 'TODO_WHATSAPP_NUMARASI',             // örn: '905321234567' (başında + yok, boşluk yok)
+  email: 'TODO_EMAIL',                            // örn: 'info@aslanhukuk.com.tr'
+  emailBooking: 'TODO_RANDEVU_EMAIL_OPSIYONEL',   // boş bırakılabilir
   hours: 'Pzt — Cum · 09:00 — 18:00',
 };
 
@@ -16,7 +24,6 @@ export const nav = [
   { href: '/',                   label: 'Anasayfa' },
   { href: '/hakkimizda',         label: 'Hakkımızda' },
   { href: '/calisma-alanlari',   label: 'Çalışma Alanları' },
-  { href: '/ekip',               label: 'Ekibimiz' },
   { href: '/iletisim',           label: 'İletişim' },
 ];
 
@@ -37,7 +44,7 @@ export const practices = [
     no: '02',
     slug: 'ticaret',
     name: 'Ticaret ve Şirketler Hukuku',
-    desc: 'Şirket kuruluşundan birleşmelere, sözleşmelerden uyuşmazlık çözümüne kurumsal danışmanlık.',
+    desc: 'Şirket kuruluşundan sözleşme yönetimine, ticari uyuşmazlıklarda titiz danışmanlık.',
     items: [
       'Şirket kuruluş, devir ve birleşme',
       'Ticari sözleşmeler ve müzakereler',
@@ -49,12 +56,12 @@ export const practices = [
     no: '03',
     slug: 'is',
     name: 'İş ve Sosyal Güvenlik Hukuku',
-    desc: 'İşçi-işveren uyuşmazlıklarında dava ve İK departmanlarına proaktif danışmanlık.',
+    desc: 'İşçi-işveren uyuşmazlıklarında dava ve İK ihtiyaçlarına proaktif danışmanlık.',
     items: [
       'Kıdem, ihbar tazminatı ve fazla mesai',
       'İşe iade ve mobbing davaları',
       'SGK ve iş kazası uyuşmazlıkları',
-      'Toplu iş sözleşmeleri',
+      'İş sözleşmesi inceleme ve müzakere',
     ],
   },
   {
@@ -95,58 +102,34 @@ export const practices = [
   },
 ] as const;
 
+// Sayılar — gerçek değerler kullanıcıdan alınınca güncellenecek
+// TODO: Mesut Aslan'ın yıl tecrübesi, dosya sayısı vb. doğrulanacak
 export const stats = [
-  { num: '22',   label: 'Yıllık Tecrübe' },
-  { num: '1,500+', label: 'Sonuçlanan Dosya' },
-  { num: '12',   label: 'Avukat Kadrosu' },
-  { num: '%96',  label: 'Müvekkil Memnuniyeti' },
+  { num: 'TODO_YIL',       label: 'Yıllık Tecrübe' },
+  { num: 'TODO_DOSYA',     label: 'Sonuçlanan Dosya' },
+  { num: '6',              label: 'Uzmanlık Alanı' },
+  { num: 'Tam',            label: 'Gizlilik Esası' },
 ];
 
+// Verdicts (seçilmiş sonuçlar) — placeholder, gerçek dosyalardan anonimleştirilmiş
+// TODO: Mesut Aslan'dan kendi sonuçlarını alıp güncelle
 export const verdicts = [
   {
-    year: '2025',
+    year: 'TODO_YIL',
     area: 'Ticaret',
-    lede: 'Yedi rakiplı tahkim sürecinde, çok uluslu inşaat şirketinin 14M USD alacak tahsili.',
-    outcome: 'Lehe karar',
+    lede: 'TODO: Anonimleştirilmiş dava özeti — sonuç ve sürecin kısa açıklaması.',
+    outcome: 'TODO_SONUC',
   },
   {
-    year: '2024',
+    year: 'TODO_YIL',
     area: 'İdare',
-    lede: 'Düzenleyici kurum kararının iptali ile sektörel uygulamanın yeniden şekillendirilmesi.',
-    outcome: 'İptal — Danıştay',
+    lede: 'TODO: Anonimleştirilmiş dava özeti.',
+    outcome: 'TODO_SONUC',
   },
   {
-    year: '2024',
+    year: 'TODO_YIL',
     area: 'İş Hukuku',
-    lede: 'Yüksek profilli işe iade davasında müvekkilin tüm haklarının korunması.',
-    outcome: 'Kabul + tam tazminat',
+    lede: 'TODO: Anonimleştirilmiş dava özeti.',
+    outcome: 'TODO_SONUC',
   },
-];
-
-export const partners = [
-  {
-    name: 'Av. Mehmet Aslan',
-    role: 'Kurucu Ortak',
-    title: 'İstanbul Üniversitesi Hukuk · 1998',
-    bio: 'Ticaret ve şirketler hukukunda 25+ yıllık tecrübe. M&A ve uluslararası tahkim danışmanlığı.',
-  },
-  {
-    name: 'Av. Zeynep Aslan',
-    role: 'Yönetici Ortak',
-    title: 'Ankara Üniversitesi Hukuk · 2005',
-    bio: 'Aile ve miras hukukunda uzman. Yüksek profilli boşanma ve mal rejimi davalarında tanınan deneyim.',
-  },
-  {
-    name: 'Av. Kemal Yıldız',
-    role: 'Ortak',
-    title: 'Galatasaray Üniversitesi Hukuk · 2007',
-    bio: 'Ceza hukuku, beyaz yaka suçları ve istinaf süreçlerinde derinleşmiş pratik.',
-  },
-];
-
-export const associates = [
-  { name: 'Av. Elif Korkmaz', role: 'İş Hukuku',     title: 'İstanbul Üniversitesi · 2014' },
-  { name: 'Av. Burak Şahin',   role: 'Gayrimenkul',   title: 'Bilkent Üniversitesi · 2015' },
-  { name: 'Av. Selin Demir',  role: 'İdare ve Vergi', title: 'Marmara Üniversitesi · 2014' },
-  { name: 'Av. Mert Özkan',   role: 'Ticaret',       title: 'Koç Üniversitesi · 2016' },
 ];
