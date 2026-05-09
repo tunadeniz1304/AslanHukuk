@@ -6,6 +6,7 @@ export const site = {
   address: 'Levent Mah. Büyükdere Cad. No: 120, K:5 Şişli/İstanbul',
   phone: '+90 212 555 12 34',
   phoneAlt: '+90 532 123 45 67',
+  whatsapp: '905321234567',
   email: 'info@aslanhukuk.com.tr',
   emailBooking: 'randevu@aslanhukuk.com.tr',
   hours: 'Pzt — Cum · 09:00 — 18:00',

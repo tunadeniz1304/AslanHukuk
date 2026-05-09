@@ -4,12 +4,19 @@
 
 /* ==============================================================
    ASLAN HUKUK — Editorial base
+   Display: Fraunces (variable serif, modern + readable)
+   Body:    Inter (modern sans, max readability)
+   Mono:    JetBrains Mono (eyebrow / meta)
    ============================================================== */
 @layer base {
   :root {
     --t-fast: 200ms cubic-bezier(.2,.7,.3,1);
     --t-med:  450ms cubic-bezier(.2,.7,.3,1);
     --t-slow: 800ms cubic-bezier(.2,.7,.3,1);
+
+    /* Fraunces variable axes presets */
+    --fraunces-display: "opsz" 144, "SOFT" 30, "WONK" 0;
+    --fraunces-text:    "opsz" 30,  "SOFT" 50, "WONK" 0;
   }
 
   html {
@@ -22,16 +29,17 @@
     @apply bg-paper text-ink font-body antialiased;
     font-size: 17px;
     line-height: 1.65;
-    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    font-feature-settings: "kern" 1, "liga" 1, "ss01" 1;
   }
 
   ::selection { background: #0a0a0a; color: #f5f1e8; }
 
   h1, h2, h3, h4 {
-    @apply font-serif text-ink;
-    font-weight: 400;
-    letter-spacing: -0.022em;
-    line-height: 1.04;
+    @apply font-display text-ink;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-variation-settings: var(--fraunces-display);
   }
 
   a { color: inherit; text-decoration: none; transition: color var(--t-fast); }
@@ -44,22 +52,51 @@
 @layer components {
   /* ----- Editorial type roles ----- */
   .display {
-    @apply font-serif font-normal;
-    font-size: clamp(3.25rem, 8.5vw, 8rem);
-    line-height: 0.94;
-    letter-spacing: -0.04em;
+    @apply font-display;
+    font-weight: 500;
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 0;
   }
-  .display em { @apply text-gold not-italic; font-style: italic; font-weight: 400; }
+  .display em {
+    @apply text-gold-deep;
+    font-style: italic;
+    font-weight: 500;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0;
+  }
 
-  .h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.04; letter-spacing: -0.03em; }
-  .h2 { font-size: clamp(2rem, 4vw, 3.25rem);   line-height: 1.08; letter-spacing: -0.025em; }
-  .h3 { font-size: clamp(1.4rem, 2.2vw, 1.85rem); line-height: 1.2; letter-spacing: -0.015em; }
+  .h1 {
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+  }
+  .h2 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+  }
+  .h3 {
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+  }
+
+  /* Subtle italic accent for display headings (Fraunces optical italic) */
+  .accent-italic {
+    font-style: italic;
+    color: #8a6b2a;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0;
+  }
 
   .lead {
-    @apply font-body text-ink-soft italic;
-    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
-    line-height: 1.55;
-    font-weight: 300;
+    @apply font-body text-ink-soft;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.6;
+    font-weight: 400;
   }
 
   .eyebrow {
@@ -97,11 +134,12 @@
     @apply font-mono uppercase inline-flex items-baseline gap-2 text-ink;
     font-size: 0.72rem;
     letter-spacing: 0.22em;
+    font-weight: 500;
     padding-bottom: 4px;
     border-bottom: 1px solid currentColor;
     transition: gap var(--t-fast), color var(--t-fast);
   }
-  .ed-link::after { content: "→"; @apply font-serif; font-size: 0.95rem; transition: transform var(--t-fast); }
+  .ed-link::after { content: "→"; @apply font-display; font-size: 1rem; transition: transform var(--t-fast); }
   .ed-link:hover { gap: 0.95rem; @apply text-gold; }
   .ed-link:hover::after { transform: translateX(4px); }
   .ed-link.on-dark { @apply text-paper; }
@@ -111,12 +149,13 @@
     @apply inline-block font-mono uppercase bg-ink text-paper border border-ink;
     font-size: 0.72rem;
     letter-spacing: 0.22em;
-    padding: 1.15rem 2.2rem;
+    font-weight: 500;
+    padding: 1.1rem 2rem;
     transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
   }
   .ed-btn:hover { @apply bg-gold border-gold text-paper; }
   .ed-btn.outline { @apply bg-transparent text-ink; }
   .ed-btn.outline:hover { @apply bg-ink text-paper; }
-  .ed-btn.on-dark { @apply bg-paper text-ink border-paper; }
-  .ed-btn.on-dark:hover { @apply bg-gold border-gold text-paper; }
+  .ed-btn.on-dark { @apply bg-gold text-noir border-gold; }
+  .ed-btn.on-dark:hover { @apply bg-paper border-paper text-noir; }
 }

@@ -4,17 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink:    { DEFAULT: '#0a0a0a', soft: '#2a2a2a', mute: '#6b6b6b' },
+        ink:    { DEFAULT: '#0a0a0a', soft: '#2a2a2a', mute: '#5a5a5a' },
         paper:  { DEFAULT: '#f5f1e8', deep: '#ebe5d3', light: '#faf7ee' },
         rule:   { DEFAULT: '#d8d2c4', soft: '#ece7da' },
-        gold:   { DEFAULT: '#8a6b2a', soft: '#b59456', deep: '#6f5520' },
-        noir:   '#14110b'
+        gold:   { DEFAULT: '#b89150', soft: '#d2ae6f', deep: '#8a6b2a' },
+        noir:   { DEFAULT: '#0e0c08', soft: '#1a1610' },
+        whatsapp: { DEFAULT: '#25D366', deep: '#128C7E' }
       },
       fontFamily: {
-        serif:    ['"Playfair Display"', '"Source Serif 4"', 'Georgia', 'serif'],
-        body:     ['"Source Serif 4"', 'Georgia', 'serif'],
-        mono:     ['"JetBrains Mono"', '"Courier New"', 'monospace'],
-        sans:     ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        display:  ['Fraunces', 'Georgia', 'serif'],
+        serif:    ['Fraunces', 'Georgia', 'serif'],
+        body:     ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans:     ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        mono:     ['"JetBrains Mono"', '"Courier New"', 'monospace']
       },
       letterSpacing: {
         editorial: '-0.025em',
@@ -31,10 +33,15 @@ export default {
         marquee: {
           '0%':   { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' }
+        },
+        wapulse: {
+          '0%, 100%':  { boxShadow: '0 0 0 0 rgba(37,211,102,0.55)' },
+          '50%':       { boxShadow: '0 0 0 14px rgba(37,211,102,0)' }
         }
       },
       animation: {
-        marquee: 'marquee 38s linear infinite'
+        marquee: 'marquee 38s linear infinite',
+        wapulse: 'wapulse 2.4s ease-in-out infinite'
       }
     }
   },

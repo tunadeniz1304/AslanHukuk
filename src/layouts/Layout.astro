@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import WhatsAppFab from '../components/react/WhatsAppFab.tsx';
+import { site } from '../data/site';
 
 interface Props {
   title: string;
@@ -19,7 +21,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f5f1e8" />
+    <meta name="theme-color" content="#0e0c08" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -31,7 +33,7 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,30..100,0..1;1,9..144,400..700,30..100,0..1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -40,9 +42,9 @@ const {
       '@type': 'LegalService',
       name: 'Aslan Hukuk Bürosu',
       url: 'https://aslanhukuk.com.tr',
-      telephone: '+902125551234',
-      email: 'info@aslanhukuk.com.tr',
-      foundingDate: '2003',
+      telephone: site.phone.replace(/\s+/g,''),
+      email: site.email,
+      foundingDate: site.established,
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Levent Mah. Büyükdere Cad. No:120 K:5',
@@ -61,5 +63,10 @@ const {
       <slot />
     </main>
     <Footer />
+    <WhatsAppFab
+      client:idle
+      phone={site.whatsapp}
+      message="Merhaba, hukuki bir konuda görüşme talep etmek istiyorum."
+    />
   </body>
 </html>
