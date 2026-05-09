@@ -8,7 +8,11 @@ import { practices } from '../data/site';
   <section class="border-b border-rule" style="padding: clamp(4rem,7vw,7rem) 0 clamp(3rem,5vw,5rem);">
     <div class="shell">
       <Reveal client:visible>
-        <div class="font-mono uppercase text-ink-mute mb-6" style="font-size:0.7rem; letter-spacing:0.28em;">Anasayfa / Çalışma Alanları</div>
+        <div class="mono-meta mb-6 flex items-center gap-3">
+          <a href="/" class="text-ink-soft hover:text-gold transition">ANASAYFA</a>
+          <span class="text-gold">/</span>
+          <span class="text-ink">ÇALIŞMA ALANLARI</span>
+        </div>
       </Reveal>
       <Reveal client:visible delay={0.1}>
         <h1 class="display" style="max-width: 14ch;">Altı alan,<br/><em style="color:#8a6b2a; font-style:italic;">tek</em> standart.</h1>
