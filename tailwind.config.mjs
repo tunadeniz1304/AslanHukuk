@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink:    { DEFAULT: '#0a0a0a', soft: '#2a2a2a', mute: '#5a5a5a' },
+        ink:    { DEFAULT: '#0a0a0a', soft: '#2a2a2a', mute: '#3a3a3a' },
         paper:  { DEFAULT: '#f5f1e8', deep: '#ebe5d3', light: '#faf7ee' },
         rule:   { DEFAULT: '#d8d2c4', soft: '#ece7da' },
         gold:   { DEFAULT: '#b89150', soft: '#d2ae6f', deep: '#8a6b2a' },

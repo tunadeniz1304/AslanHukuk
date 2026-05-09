@@ -55,9 +55,11 @@
     @apply font-display;
     font-weight: 500;
     font-size: clamp(3rem, 8vw, 7.5rem);
-    line-height: 0.96;
+    line-height: 1.08;          /* taller so g/ç descenders never clip */
     letter-spacing: -0.035em;
     font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 0;
+    overflow: visible;
+    padding-bottom: 0.05em;     /* extra room for descenders */
   }
   .display em {
     @apply text-gold-deep;
@@ -100,19 +102,28 @@
   }
 
   .eyebrow {
-    @apply font-mono uppercase text-ink-mute inline-flex items-center gap-2;
-    font-size: 0.7rem;
-    letter-spacing: 0.32em;
-    font-weight: 500;
+    @apply font-mono uppercase text-ink inline-flex items-center gap-2;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    font-weight: 600;
   }
-  .eyebrow::before { content: ""; @apply bg-ink-mute; width: 24px; height: 1px; }
+  .eyebrow::before { content: ""; @apply bg-gold; width: 28px; height: 1.5px; }
   .eyebrow.on-dark { @apply text-gold-soft; }
-  .eyebrow.on-dark::before { @apply bg-gold-soft; }
+  .eyebrow.on-dark::before { @apply bg-gold-soft; height: 1.5px; }
 
   .numeral {
-    @apply font-mono text-ink-mute;
-    font-size: 0.72rem;
+    @apply font-mono text-ink;
+    font-size: 0.74rem;
     letter-spacing: 0.18em;
+    font-weight: 600;
+  }
+
+  /* Strong, readable mono meta lines */
+  .mono-meta {
+    @apply font-mono uppercase text-ink;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    font-weight: 600;
   }
 
   /* ----- Layout primitives ----- */
