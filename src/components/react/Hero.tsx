@@ -1,9 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
-const META_LEFT  = 'ASLAN HUKUK · ANKARA';
-const META_MID   = 'İHTİSAS · 6 ALAN';
-const META_RIGHT = 'EST. 2025';
-
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
@@ -30,21 +26,10 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="section pt-[clamp(2rem,4vw,4rem)] pb-[clamp(4rem,9vw,8rem)]">
+    <section className="section pt-[clamp(2.5rem,5vw,5rem)] pb-[clamp(4rem,9vw,8rem)]">
       <div className="shell">
-        {/* Top meta rule */}
-        <motion.div
-          {...(reduce ? {} : fade(0))}
-          className="flex justify-between items-center py-4 border-b border-rule font-mono uppercase text-ink flex-wrap gap-2"
-          style={{ fontSize: '0.72rem', letterSpacing: '0.22em', fontWeight: 600 }}
-        >
-          <span>{META_LEFT}</span>
-          <span className="hidden sm:inline">{META_MID}</span>
-          <span>{META_RIGHT}</span>
-        </motion.div>
-
         {/* Two-column hero: headline + portrait */}
-        <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-10 lg:gap-16 items-end mt-[clamp(2rem,5vw,4rem)]">
+        <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-10 lg:gap-16 items-end">
 
           {/* LEFT — Headline */}
           <div>
