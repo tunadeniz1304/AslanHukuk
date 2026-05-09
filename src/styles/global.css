@@ -62,10 +62,10 @@
     padding-bottom: 0.05em;     /* extra room for descenders */
   }
   .display em {
-    @apply text-gold-deep;
+    @apply text-gold;
     font-style: italic;
     font-weight: 500;
-    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
   }
 
   .h1 {
@@ -91,7 +91,7 @@
   .accent-italic {
     font-style: italic;
     color: #8a6b2a;
-    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
   }
 
   .lead {

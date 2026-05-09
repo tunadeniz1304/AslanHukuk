@@ -7,7 +7,7 @@ export default {
         ink:    { DEFAULT: '#0a0a0a', soft: '#2a2a2a', mute: '#3a3a3a' },
         paper:  { DEFAULT: '#f5f1e8', deep: '#ebe5d3', light: '#faf7ee' },
         rule:   { DEFAULT: '#d8d2c4', soft: '#ece7da' },
-        gold:   { DEFAULT: '#b89150', soft: '#d2ae6f', deep: '#8a6b2a' },
+        gold:   { DEFAULT: '#8a6b2a', soft: '#d2ae6f', deep: '#6f5520', bright: '#b89150' },
         noir:   { DEFAULT: '#0e0c08', soft: '#1a1610' },
         whatsapp: { DEFAULT: '#25D366', deep: '#128C7E' }
       },
@@ -35,8 +35,8 @@ export default {
           '100%': { transform: 'translateX(-50%)' }
         },
         wapulse: {
-          '0%, 100%':  { boxShadow: '0 0 0 0 rgba(37,211,102,0.55)' },
-          '50%':       { boxShadow: '0 0 0 14px rgba(37,211,102,0)' }
+          '0%, 100%':  { boxShadow: '0 0 0 0 rgba(184,145,80,0.50)' },
+          '50%':       { boxShadow: '0 0 0 14px rgba(184,145,80,0)' }
         }
       },
       animation: {
