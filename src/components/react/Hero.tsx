@@ -161,7 +161,7 @@ export default function Hero() {
                 decoding="async"
                 fetchPriority="high"
                 className="absolute inset-0 w-full h-full transition duration-700 hover:scale-[1.02]"
-                style={{ objectFit: 'cover', objectPosition: 'center 18%' }}
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
               />
               {/* Bottom caption strip */}
               <figcaption className="absolute left-0 right-0 bottom-0 bg-noir text-paper px-5 py-4 flex items-end justify-between gap-4">
