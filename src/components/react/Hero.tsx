@@ -142,14 +142,10 @@ export default function Hero() {
           {/* RIGHT — Portrait, viewport-capped height, never overflows */}
           <motion.figure
             {...(reduce ? {} : fade(0.4))}
-            className="relative m-0 lg:max-h-[88vh] flex flex-col group/portrait"
+            className="relative m-0 flex flex-col group/portrait"
           >
             <div
-              className="bg-noir overflow-hidden relative w-full"
-              style={{
-                aspectRatio: '4 / 5',
-                maxHeight: 'clamp(480px, 82vh, 880px)',
-              }}
+              className="bg-noir overflow-hidden relative w-full hero-portrait-frame"
             >
               <img
                 src="/photos/mesut-aslan.png"
