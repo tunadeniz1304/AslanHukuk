@@ -54,7 +54,8 @@ const cleanFounding = site.established.startsWith('TODO') ? undefined : site.est
       founder: { '@type': 'Person', name: site.attorney.name, jobTitle: site.attorney.role },
       address: { '@type': 'PostalAddress', addressLocality: 'İstanbul', addressCountry: 'TR' },
       areaServed: 'Türkiye',
-      knowsAbout: ['Aile Hukuku','Ticaret Hukuku','İş Hukuku','Ceza Hukuku','Gayrimenkul Hukuku','İdare ve Vergi Hukuku']
+      knowsAbout: ['Aile Hukuku','Ticaret Hukuku','İş Hukuku','Ceza Hukuku','Gayrimenkul Hukuku','İdare ve Vergi Hukuku'],
+      sameAs: [site.social.linkedin, site.social.instagram]
     }, null, 0)} />
 
     <title>{title}</title>
