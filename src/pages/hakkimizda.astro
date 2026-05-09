@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Reveal from '../components/react/Reveal.tsx';
+import { stats } from '../data/site';
+
+const principles = [
+  { no: '01', title: 'Gizlilik',          desc: 'Müvekkil sırrı tartışılmaz. Tüm bilgileriniz, hukukun verdiği güvencenin ötesinde, mesleki vicdanımızla korunur.' },
+  { no: '02', title: 'İhtisas',           desc: 'Her avukatımız tek bir alanda derinleşir. Yüzeysel çalışma, müvekkilin geleceğini riske atar.' },
+  { no: '03', title: 'Sessizlik',         desc: 'Davayı medyada değil, dosyada kazanırız. Müvekkilimizin itibarını korumak, başarımızın bir parçasıdır.' },
+  { no: '04', title: 'Süreç Şeffaflığı',  desc: 'Müvekkil, dosyasının her aşamasında nerede olduğunu bilir. Belirsizlik, hizmetimizin bir parçası değildir.' },
+  { no: '05', title: 'Sonuç Sorumluluğu', desc: 'Aldığımız her dosyada, sonuca dair açık ve gerçekçi bir değerlendirme yaparız. Boş vaat vermeyiz.' },
+  { no: '06', title: 'Etik Çizgi',        desc: 'Avukatlık mesleğinin etik kurallarına ve hukukun üstünlüğüne, koşulsuz bağlıyız.' },
+];
+
+const timeline = [
+  { year: '2003', text: 'Av. Mehmet Aslan tarafından İstanbul Şişli\'de büronun kuruluşu.' },
+  { year: '2008', text: 'Ticaret ve şirketler hukuku uzmanlık biriminin kurulması.' },
+  { year: '2014', text: 'On avukatlı kadroya geçiş; idare ve vergi biriminin açılması.' },
+  { year: '2019', text: 'Levent\'teki yeni ofise taşınma; uluslararası tahkim danışmanlığının başlaması.' },
+  { year: '2026', text: 'On iki avukat, altı uzmanlık alanı ve 1.500+ sonuçlanan dosya.' },
+];
+---
+<Layout title="Hakkımızda — Aslan Hukuk Bürosu" current="/hakkimizda">
+
+  <!-- Subhero -->
+  <section class="border-b border-rule" style="padding: clamp(4rem,7vw,7rem) 0 clamp(3rem,5vw,5rem);">
+    <div class="shell">
+      <Reveal client:visible>
+        <div class="font-mono uppercase text-ink-mute mb-6" style="font-size:0.7rem; letter-spacing:0.28em;">Anasayfa / Hakkımızda</div>
+      </Reveal>
+      <Reveal client:visible delay={0.1}>
+        <h1 class="display" style="max-width: 13ch;">
+          Yirmi iki yıllık<br/>
+          <em style="color:#8a6b2a; font-style:italic;">sessiz</em> bir pratik.
+        </h1>
+      </Reveal>
+      <Reveal client:visible delay={0.2}>
+        <p class="lead mt-8" style="max-width: 50ch;">
+          Aslan Hukuk Bürosu; gösterişli vaatlerle değil, dosyada kazanılan kararlarla büyüyen bir hukuk pratiğidir.
+        </p>
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- Hikaye + sayılar split -->
+  <section class="section">
+    <div class="shell">
+      <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-start">
+        <Reveal client:visible>
+          <div class="sticky top-32">
+            <span class="eyebrow">001 — Hikaye</span>
+            <h2 class="h2 mt-6">Bir oda, bir<br/>kararlılık.</h2>
+          </div>
+        </Reveal>
+
+        <Reveal client:visible delay={0.1}>
+          <div class="space-y-6 font-body" style="font-size: 1.1rem; line-height: 1.7; color:#2a2a2a;">
+            <p style="max-width:none;">
+              <span class="font-serif" style="font-size:2.2rem; line-height:1; float:left; padding: 6px 12px 0 0; color:#0a0a0a;">A</span>
+              slan Hukuk Bürosu, 2003 yılında İstanbul Şişli'de tek odalı bir ofiste, kurucu Av. Mehmet Aslan'ın bir prensibiyle açıldı: bir avukatın değeri, kabul ettiği dosya sayısıyla değil, her birine ayırdığı emekle ölçülür.
+            </p>
+            <p style="max-width:none;">
+              Yirmi iki yılda büro büyüdü, alanları çoğaldı, kadromuz on ikiye yükseldi. Ama temel prensip değişmedi: her dosyaya, ilk dosyamıza gösterdiğimiz dikkati gösteririz.
+            </p>
+            <p style="max-width:none;">
+              Bugün, Türkiye'nin önde gelen kurumsal müvekkilleriyle ve onlarca bireysel müvekkille çalışıyoruz. Hiçbiri için sıradan değiliz; hiçbirini sıradan görmedik.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="bg-paper-deep section">
+    <div class="shell">
+      <Reveal client:visible>
+        <span class="eyebrow">002 — Kronoloji</span>
+        <h2 class="h2 mt-6 mb-12" style="max-width: 14ch;">Yıl yıl, dosya dosya.</h2>
+      </Reveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-y-0 border-t border-rule">
+        {timeline.map((t, i) => (
+          <>
+            <Reveal client:visible delay={i * 0.06}>
+              <div class="font-serif italic py-6 md:py-8 md:pr-8 border-b border-rule" style="font-size: clamp(2rem,3.5vw,2.75rem); line-height:1; color:#8a6b2a;">{t.year}</div>
+            </Reveal>
+            <Reveal client:visible delay={i * 0.06 + 0.04}>
+              <div class="font-body py-2 md:py-8 pb-6 md:pb-8 border-b border-rule" style="font-size: 1.15rem; line-height:1.55; color:#2a2a2a; max-width: 60ch;">{t.text}</div>
+            </Reveal>
+          </>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="section">
+    <div class="shell">
+      <Reveal client:visible>
+        <div class="flex justify-between items-end mb-12 flex-wrap gap-4">
+          <div>
+            <span class="eyebrow">003 — Prensipler</span>
+            <h2 class="h2 mt-6" style="max-width: 14ch;">Pratiğimizi yöneten altı çizgi.</h2>
+          </div>
+        </div>
+      </Reveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-rule">
+        {principles.map((p, i) => (
+          <Reveal client:visible delay={i * 0.06}>
+            <article class={`p-8 md:p-10 border-b border-rule ${(i + 1) % 3 !== 0 ? 'lg:border-r' : ''} ${i % 2 === 0 ? 'md:border-r lg:border-r' : ''}`} style="min-height: 280px;">
+              <div class="font-mono text-gold mb-5" style="font-size:0.85rem; letter-spacing:0.18em;">— {p.no}</div>
+              <h3 class="h3 mb-4">{p.title}</h3>
+              <p class="m-0" style="font-size:1rem; line-height:1.6; color:#2a2a2a;">{p.desc}</p>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats noir -->
+  <section class="bg-noir text-paper section">
+    <div class="shell">
+      <Reveal client:visible>
+        <span class="eyebrow on-dark">004 — Sayılarla</span>
+      </Reveal>
+      <div class="grid grid-cols-2 md:grid-cols-4 mt-10 border-t border-paper/15">
+        {stats.map((s, i) => (
+          <Reveal client:visible delay={i * 0.06}>
+            <div class={`py-10 md:py-14 px-2 md:px-6 ${i < stats.length - 1 ? 'md:border-r border-paper/15' : ''}`}>
+              <div class="font-serif" style="font-size: clamp(2.4rem,5vw,4rem); line-height:1; color:#f5f1e8;">{s.num}</div>
+              <div class="font-mono uppercase mt-4" style="font-size:0.68rem; letter-spacing:0.22em; color:rgba(245,241,232,0.55);">{s.label}</div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
