@@ -29,8 +29,8 @@ export default function Hero() {
     <section className="pt-[clamp(2.5rem,5vw,5rem)] pb-[clamp(5rem,9vw,8rem)]">
       <div className="shell">
 
-        {/* ───── ROW 1: Headline (left) + Portrait (right), top-aligned ───── */}
-        <div className="grid grid-cols-1 lg:grid-cols-[6fr_5fr] gap-10 lg:gap-14 items-start">
+        {/* ───── ROW 1: Headline (left) + Portrait (right), stretch on desktop ───── */}
+        <div className="grid grid-cols-1 lg:grid-cols-[6fr_5fr] gap-10 lg:gap-14 items-start lg:items-stretch">
 
           {/* LEFT — Headline + lead + CTA, all stacked, vertical rhythm consistent */}
           <div className="flex flex-col">
@@ -139,13 +139,13 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — Portrait, pulled upward to align with header bottom */}
+          {/* RIGHT — Portrait, top edge slightly above headline, bottom aligned with CTA */}
           <motion.figure
             {...(reduce ? {} : fade(0.4))}
-            className="relative m-0 flex flex-col group/portrait lg:-mt-[clamp(2.5rem,5vw,5rem)]"
+            className="relative m-0 flex flex-col group/portrait lg:-mt-6 xl:-mt-10 lg:h-full"
           >
             <div
-              className="bg-noir overflow-hidden relative w-full hero-portrait-frame"
+              className="bg-noir overflow-hidden relative w-full hero-portrait-frame lg:flex-1"
             >
               <img
                 src="/photos/mesut-aslan.png"
