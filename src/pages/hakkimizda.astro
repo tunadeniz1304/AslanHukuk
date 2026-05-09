@@ -1,23 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Reveal from '../components/react/Reveal.tsx';
-import { stats } from '../data/site';
+import { stats, site } from '../data/site';
 
 const principles = [
-  { no: '01', title: 'Gizlilik',          desc: 'Müvekkil sırrı tartışılmaz. Tüm bilgileriniz, hukukun verdiği güvencenin ötesinde, mesleki vicdanımızla korunur.' },
-  { no: '02', title: 'İhtisas',           desc: 'Her avukatımız tek bir alanda derinleşir. Yüzeysel çalışma, müvekkilin geleceğini riske atar.' },
-  { no: '03', title: 'Sessizlik',         desc: 'Davayı medyada değil, dosyada kazanırız. Müvekkilimizin itibarını korumak, başarımızın bir parçasıdır.' },
-  { no: '04', title: 'Süreç Şeffaflığı',  desc: 'Müvekkil, dosyasının her aşamasında nerede olduğunu bilir. Belirsizlik, hizmetimizin bir parçası değildir.' },
-  { no: '05', title: 'Sonuç Sorumluluğu', desc: 'Aldığımız her dosyada, sonuca dair açık ve gerçekçi bir değerlendirme yaparız. Boş vaat vermeyiz.' },
-  { no: '06', title: 'Etik Çizgi',        desc: 'Avukatlık mesleğinin etik kurallarına ve hukukun üstünlüğüne, koşulsuz bağlıyız.' },
+  { no: '01', title: 'Gizlilik',          desc: 'Müvekkil sırrı tartışılmaz. Tüm bilgileriniz, hukukun verdiği güvencenin ötesinde, mesleki vicdanımla korunur.' },
+  { no: '02', title: 'İhtisas',           desc: 'Her dosya kendi alanının derinliğiyle çalışılır. Yüzeysel pratik, müvekkilin geleceğini riske atar.' },
+  { no: '03', title: 'Sessizlik',         desc: 'Davayı medyada değil, dosyada kazanırım. Müvekkilin itibarını korumak başarımın bir parçasıdır.' },
+  { no: '04', title: 'Süreç Şeffaflığı',  desc: 'Müvekkilim, dosyasının her aşamasında nerede olduğunu bilir. Belirsizlik, hizmetimin bir parçası değildir.' },
+  { no: '05', title: 'Sonuç Sorumluluğu', desc: 'Aldığım her dosyada, sonuca dair açık ve gerçekçi bir değerlendirme yaparım. Boş vaat vermem.' },
+  { no: '06', title: 'Etik Çizgi',        desc: 'Avukatlık mesleğinin etik kurallarına ve hukukun üstünlüğüne, koşulsuz bağlıyım.' },
 ];
 
+// TODO: Gerçek kronolojiyi Mesut Aslan ile birlikte güncelle
 const timeline = [
-  { year: '2003', text: 'Av. Mehmet Aslan tarafından İstanbul Şişli\'de büronun kuruluşu.' },
-  { year: '2008', text: 'Ticaret ve şirketler hukuku uzmanlık biriminin kurulması.' },
-  { year: '2014', text: 'On avukatlı kadroya geçiş; idare ve vergi biriminin açılması.' },
-  { year: '2019', text: 'Levent\'teki yeni ofise taşınma; uluslararası tahkim danışmanlığının başlaması.' },
-  { year: '2026', text: 'On iki avukat, altı uzmanlık alanı ve 1.500+ sonuçlanan dosya.' },
+  { year: 'TODO',  text: 'TODO: Hukuk fakültesi mezuniyet ve avukatlık ruhsatı.' },
+  { year: 'TODO',  text: 'TODO: Bağımsız büronun kuruluşu — İstanbul.' },
+  { year: 'TODO',  text: 'TODO: İhtisas alanlarının netleştirilmesi.' },
+  { year: 'TODO',  text: 'TODO: Önemli bir dönüm noktası ya da başarı.' },
+  { year: '2026', text: 'Bugün; altı uzmanlık alanında müvekkillere bireysel pratik ile hizmet.' },
 ];
 ---
 <Layout title="Hakkımızda — Aslan Hukuk Bürosu" current="/hakkimizda">
@@ -33,44 +34,91 @@ const timeline = [
         </div>
       </Reveal>
       <Reveal client:visible delay={0.1}>
-        <h1 class="display" style="max-width: 13ch;">
-          Yirmi iki yıllık<br/>
-          <em style="color:#8a6b2a; font-style:italic;">sessiz</em> bir pratik.
+        <h1 class="display" style="max-width: 14ch;">
+          Bir avukat,<br/>
+          <span class="accent-italic">tek bir standart.</span>
         </h1>
       </Reveal>
       <Reveal client:visible delay={0.2}>
         <p class="lead mt-8" style="max-width: 50ch;">
-          Aslan Hukuk Bürosu; gösterişli vaatlerle değil, dosyada kazanılan kararlarla büyüyen bir hukuk pratiğidir.
+          Aslan Hukuk Bürosu; gösterişli vaatlerle değil, dosyada kazanılan kararlarla büyüyen bireysel bir hukuk pratiğidir.
         </p>
       </Reveal>
     </div>
   </section>
 
-  <!-- Hikaye + sayılar split -->
+  <!-- KURUCU AVUKAT — Mesut Aslan büyük portre + bio -->
   <section class="section">
     <div class="shell">
-      <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-[6fr_6fr] gap-12 lg:gap-16 items-start">
+
         <Reveal client:visible>
-          <div class="sticky top-32">
-            <span class="eyebrow">001 — Hikaye</span>
-            <h2 class="h2 mt-6">Bir oda, bir<br/>kararlılık.</h2>
+          <div class="relative">
+            <div class="aspect-[4/5] bg-noir overflow-hidden relative">
+              <img
+                src={site.attorney.photo}
+                alt={`${site.attorney.name} — ${site.attorney.role}`}
+                width="900" height="1125"
+                loading="eager"
+                decoding="async"
+                class="w-full h-full object-cover transition duration-700 hover:scale-[1.02]"
+              />
+              <!-- editorial bottom caption block -->
+              <div class="absolute left-0 bottom-0 right-0 bg-noir text-paper px-6 py-5 flex items-end justify-between gap-4">
+                <div>
+                  <div class="font-mono uppercase text-gold-soft mb-1" style="font-size:0.66rem; letter-spacing:0.28em; font-weight:600;">— KURUCU AVUKAT</div>
+                  <div class="font-display text-paper" style="font-size: clamp(1.4rem, 2.2vw, 1.8rem); letter-spacing:-0.015em; font-weight:500;">{site.attorney.name}</div>
+                </div>
+                <div class="font-mono text-gold" style="font-size:0.66rem; letter-spacing:0.22em; font-weight:600;">İST · TR</div>
+              </div>
+            </div>
+            <!-- subtle gold rule under -->
+            <div class="absolute -bottom-3 -right-3 w-2/3 h-px bg-gold hidden lg:block"></div>
           </div>
         </Reveal>
 
-        <Reveal client:visible delay={0.1}>
-          <div class="space-y-6 font-body" style="font-size: 1.1rem; line-height: 1.7; color:#2a2a2a;">
-            <p style="max-width:none;">
-              <span class="font-serif" style="font-size:2.2rem; line-height:1; float:left; padding: 6px 12px 0 0; color:#0a0a0a;">A</span>
-              slan Hukuk Bürosu, 2003 yılında İstanbul Şişli'de tek odalı bir ofiste, kurucu Av. Mehmet Aslan'ın bir prensibiyle açıldı: bir avukatın değeri, kabul ettiği dosya sayısıyla değil, her birine ayırdığı emekle ölçülür.
-            </p>
-            <p style="max-width:none;">
-              Yirmi iki yılda büro büyüdü, alanları çoğaldı, kadromuz on ikiye yükseldi. Ama temel prensip değişmedi: her dosyaya, ilk dosyamıza gösterdiğimiz dikkati gösteririz.
-            </p>
-            <p style="max-width:none;">
-              Bugün, Türkiye'nin önde gelen kurumsal müvekkilleriyle ve onlarca bireysel müvekkille çalışıyoruz. Hiçbiri için sıradan değiliz; hiçbirini sıradan görmedik.
-            </p>
+        <Reveal client:visible delay={0.12}>
+          <div>
+            <span class="eyebrow">001 — Avukat</span>
+            <h2 class="h1 mt-6 mb-8" style="max-width: 16ch;">
+              {site.attorney.name}.
+            </h2>
+
+            <ul class="border-y border-rule list-none p-0 m-0 mb-8">
+              <li class="flex justify-between items-baseline gap-4 py-4 border-b border-rule">
+                <span class="mono-meta text-ink-mute">UNVAN</span>
+                <span class="font-display text-ink text-right" style="font-size:1.05rem; font-weight:500;">{site.attorney.role}</span>
+              </li>
+              <li class="flex justify-between items-baseline gap-4 py-4 border-b border-rule">
+                <span class="mono-meta text-ink-mute">EĞİTİM</span>
+                <span class="font-display text-ink text-right" style="font-size:1.05rem; font-weight:500;">{site.attorney.education}</span>
+              </li>
+              <li class="flex justify-between items-baseline gap-4 py-4">
+                <span class="mono-meta text-ink-mute">BARO KAYIT</span>
+                <span class="font-display text-ink text-right" style="font-size:1.05rem; font-weight:500;">{site.attorney.barRegistration}</span>
+              </li>
+            </ul>
+
+            <div class="space-y-5 font-body" style="font-size: 1.08rem; line-height: 1.7; color:#1a1a1a;">
+              <p style="max-width:none;">
+                <span class="font-display" style="font-size:2.4rem; line-height:1; float:left; padding: 4px 12px 0 0; color:#0a0a0a; font-weight:500;">A</span>
+                slan Hukuk Bürosu, Av. Mesut Aslan tarafından bireysel pratiğe verilen önemle kuruldu. Bir avukatın değeri, kabul ettiği dosya sayısıyla değil, her birine ayırdığı emekle ölçülür.
+              </p>
+              <p style="max-width:none;">
+                Büromuzda, kalabalık bir ekip yerine; her dosyayı doğrudan kendisi yöneten ve takip eden bir avukat vardır. Bu, müvekkile şu güvenceyi verir: dosyanız hiçbir zaman tanımadığınız bir asistanın masasına devredilmez.
+              </p>
+              <p style="max-width:none;">
+                Av. Mesut Aslan; ticaret, aile, iş, ceza, gayrimenkul ve idare hukuku alanlarında bireysel ve kurumsal müvekkillere doğrudan hizmet vermektedir.
+              </p>
+            </div>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a href="/iletisim" class="ed-btn">Görüşme Talep Et</a>
+              <a href="/calisma-alanlari" class="ed-link">Çalışma Alanları</a>
+            </div>
           </div>
         </Reveal>
+
       </div>
     </div>
   </section>
@@ -87,10 +135,10 @@ const timeline = [
         {timeline.map((t, i) => (
           <>
             <Reveal client:visible delay={i * 0.06}>
-              <div class="font-serif italic py-6 md:py-8 md:pr-8 border-b border-rule" style="font-size: clamp(2rem,3.5vw,2.75rem); line-height:1; color:#8a6b2a;">{t.year}</div>
+              <div class="font-display italic py-6 md:py-8 md:pr-8 border-b border-rule" style="font-size: clamp(2rem,3.5vw,2.75rem); line-height:1; color:#8a6b2a; font-weight:500;">{t.year}</div>
             </Reveal>
             <Reveal client:visible delay={i * 0.06 + 0.04}>
-              <div class="font-body py-2 md:py-8 pb-6 md:pb-8 border-b border-rule" style="font-size: 1.15rem; line-height:1.55; color:#2a2a2a; max-width: 60ch;">{t.text}</div>
+              <div class="font-body py-2 md:py-8 pb-6 md:pb-8 border-b border-rule" style="font-size: 1.1rem; line-height:1.6; color:#1a1a1a; max-width: 60ch;">{t.text}</div>
             </Reveal>
           </>
         ))}
@@ -105,7 +153,7 @@ const timeline = [
         <div class="flex justify-between items-end mb-12 flex-wrap gap-4">
           <div>
             <span class="eyebrow">003 — Prensipler</span>
-            <h2 class="h2 mt-6" style="max-width: 14ch;">Pratiğimizi yöneten altı çizgi.</h2>
+            <h2 class="h2 mt-6" style="max-width: 14ch;">Pratiğimi yöneten altı çizgi.</h2>
           </div>
         </div>
       </Reveal>
@@ -114,9 +162,9 @@ const timeline = [
         {principles.map((p, i) => (
           <Reveal client:visible delay={i * 0.06}>
             <article class={`p-8 md:p-10 border-b border-rule ${(i + 1) % 3 !== 0 ? 'lg:border-r' : ''} ${i % 2 === 0 ? 'md:border-r lg:border-r' : ''}`} style="min-height: 280px;">
-              <div class="font-mono text-gold mb-5" style="font-size:0.85rem; letter-spacing:0.18em;">— {p.no}</div>
+              <div class="font-mono text-gold mb-5" style="font-size:0.85rem; letter-spacing:0.2em; font-weight:600;">— {p.no}</div>
               <h3 class="h3 mb-4">{p.title}</h3>
-              <p class="m-0" style="font-size:1rem; line-height:1.6; color:#2a2a2a;">{p.desc}</p>
+              <p class="m-0" style="font-size:1rem; line-height:1.65; color:#1a1a1a;">{p.desc}</p>
             </article>
           </Reveal>
         ))}
@@ -134,8 +182,8 @@ const timeline = [
         {stats.map((s, i) => (
           <Reveal client:visible delay={i * 0.06}>
             <div class={`py-10 md:py-14 px-2 md:px-6 ${i < stats.length - 1 ? 'md:border-r border-paper/15' : ''}`}>
-              <div class="font-serif" style="font-size: clamp(2.4rem,5vw,4rem); line-height:1; color:#f5f1e8;">{s.num}</div>
-              <div class="font-mono uppercase mt-4" style="font-size:0.68rem; letter-spacing:0.22em; color:rgba(245,241,232,0.55);">{s.label}</div>
+              <div class="font-display" style="font-size: clamp(2.4rem,5vw,4rem); line-height:1; color:#f5f1e8; font-weight:500;">{s.num}</div>
+              <div class="font-mono uppercase mt-4" style="font-size:0.7rem; letter-spacing:0.22em; font-weight:600; color:rgba(245,241,232,0.7);">{s.label}</div>
             </div>
           </Reveal>
         ))}

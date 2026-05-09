@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
-const META_LEFT  = 'AHB · İSTANBUL · 2003 — 2026';
+const META_LEFT  = 'ASLAN HUKUK · İSTANBUL';
 const META_MID   = 'İHTİSAS · 6 ALAN';
-const META_RIGHT = 'BAROYA KAYITLI · 12 AVUKAT';
+const META_RIGHT = 'AV. MESUT ASLAN';
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -130,7 +130,7 @@ export default function Hero() {
           className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr_1fr] gap-8 md:gap-12 items-end mt-[clamp(3rem,6vw,5rem)] pt-8 border-t border-rule"
         >
           <p className="lead m-0" style={{ maxWidth: '42ch', color: '#1a1a1a' }}>
-            Aslan Hukuk Bürosu, 2003'ten bu yana ticaretin, ailenin ve devletin karşısında müvekkilini koruyan kararlı bir hukuk pratiğidir.
+            Aslan Hukuk Bürosu, ticaretin, ailenin ve devletin karşısında müvekkilini koruyan, bireysel pratiğe verilen önemle yönetilen bir hukuk bürosudur.
           </p>
 
           <div>
@@ -143,13 +143,13 @@ export default function Hero() {
                 fontWeight: 500,
               }}
             >
-              22<span style={{ color: '#8a6b2a', fontStyle: 'italic' }}>.</span>
+              6<span style={{ color: '#8a6b2a', fontStyle: 'italic' }}>.</span>
             </div>
             <div
               className="font-mono uppercase text-ink mt-3"
               style={{ fontSize: '0.7rem', letterSpacing: '0.22em', fontWeight: 600 }}
             >
-              YIL PRATİK
+              UZMANLIK ALANI
             </div>
           </div>
 

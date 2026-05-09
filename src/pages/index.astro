@@ -4,7 +4,7 @@ import Hero from '../components/react/Hero.tsx';
 import Marquee from '../components/react/Marquee.tsx';
 import PracticeList from '../components/react/PracticeList.tsx';
 import Reveal from '../components/react/Reveal.tsx';
-import { stats, verdicts } from '../data/site';
+import { stats, verdicts, site } from '../data/site';
 ---
 <Layout title="Aslan Hukuk Bürosu — Sessiz güç. Kararlı temsil." current="/">
 
@@ -21,21 +21,45 @@ import { stats, verdicts } from '../data/site';
     'M&A',
   ]} />
 
-  <!-- Manifesto -->
+  <!-- Manifesto + Founder portrait split -->
   <section class="bg-noir text-paper" style="padding: clamp(5rem,11vw,11rem) 0;">
     <div class="shell">
-      <Reveal client:visible>
-        <span class="eyebrow on-dark">001 — Manifesto</span>
-      </Reveal>
-      <Reveal client:visible delay={0.1}>
-        <p class="font-serif mt-7 mb-10" style="font-size: clamp(1.9rem,4vw,3.4rem); line-height:1.16; letter-spacing:-0.02em; max-width: 22ch; color:#f5f1e8;">
-          Bir hukuk pratiği, gürültüsüyle değil; sessizce kazandığı zaferlerle ölçülür.
-          <em style="color:#b59456; font-style:italic;"> Biz sonuçla konuşuruz.</em>
-        </p>
-      </Reveal>
-      <Reveal client:visible delay={0.2}>
-        <p class="font-serif italic" style="color:rgba(245,241,232,0.7); font-size: 1.05rem;">— Av. Mehmet Aslan, Kurucu Ortak</p>
-      </Reveal>
+      <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
+
+        <div>
+          <Reveal client:visible>
+            <span class="eyebrow on-dark">001 — Manifesto</span>
+          </Reveal>
+          <Reveal client:visible delay={0.1}>
+            <p class="font-display mt-7 mb-10" style="font-size: clamp(1.9rem,3.6vw,3.2rem); line-height:1.16; letter-spacing:-0.02em; max-width: 22ch; color:#f5f1e8; font-weight:500;">
+              Bir hukuk pratiği, gürültüsüyle değil; sessizce kazandığı zaferlerle ölçülür.
+              <em style="color:#b59456; font-style:italic; font-variation-settings:'opsz' 144, 'SOFT' 100, 'WONK' 0;"> Sonuçla konuşurum.</em>
+            </p>
+          </Reveal>
+          <Reveal client:visible delay={0.2}>
+            <p class="font-display italic" style="color:rgba(245,241,232,0.75); font-size: 1.1rem; font-weight:500;">— {site.attorney.name}, {site.attorney.role}</p>
+          </Reveal>
+        </div>
+
+        <Reveal client:visible delay={0.15}>
+          <figure class="relative">
+            <div class="aspect-[4/5] overflow-hidden bg-noir-soft border border-paper/10">
+              <img
+                src={site.attorney.photo}
+                alt={`${site.attorney.name} — ${site.attorney.role}`}
+                width="700" height="875"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition duration-700 hover:scale-[1.02]"
+              />
+            </div>
+            <figcaption class="absolute -bottom-3 -right-3 bg-gold text-noir px-4 py-2.5 font-mono uppercase shadow-lg" style="font-size:0.66rem; letter-spacing:0.22em; font-weight:700;">
+              KURUCU AVUKAT
+            </figcaption>
+          </figure>
+        </Reveal>
+
+      </div>
     </div>
   </section>
 
@@ -46,7 +70,7 @@ import { stats, verdicts } from '../data/site';
         <div class="flex justify-between items-end mb-12 flex-wrap gap-4">
           <div>
             <span class="eyebrow">002 — Çalışma Alanları</span>
-            <h2 class="h2 mt-5" style="max-width: 14ch;">İhtisaslaştığımız altı hukuk alanı.</h2>
+            <h2 class="h2 mt-5" style="max-width: 14ch;">İhtisaslaştığım altı hukuk alanı.</h2>
           </div>
           <a href="/calisma-alanlari" class="ed-link">Tümünü incele</a>
         </div>
@@ -61,9 +85,9 @@ import { stats, verdicts } from '../data/site';
       <Reveal client:visible>
         <div class="grid grid-cols-1 md:grid-cols-4 border-y border-rule">
           {stats.map((s, i) => (
-            <div class={`p-8 md:p-12 ${i < stats.length - 1 ? 'md:border-r border-rule' : ''} ${i % 2 === 0 ? 'border-b md:border-b-0 border-rule' : 'border-b md:border-b-0 border-rule'}`}>
-              <div class="font-serif" style="font-size: clamp(2.4rem,4.5vw,3.6rem); line-height:1; letter-spacing:-0.03em;">{s.num}</div>
-              <div class="font-mono uppercase text-ink-mute mt-3" style="font-size:0.7rem; letter-spacing:0.22em;">{s.label}</div>
+            <div class={`p-8 md:p-12 ${i < stats.length - 1 ? 'md:border-r border-rule' : ''} border-b md:border-b-0 border-rule`}>
+              <div class="font-display" style="font-size: clamp(2.4rem,4.5vw,3.6rem); line-height:1.05; letter-spacing:-0.03em; font-weight:500;">{s.num}</div>
+              <div class="mono-meta mt-3 text-ink-mute">{s.label}</div>
             </div>
           ))}
         </div>
@@ -90,12 +114,12 @@ import { stats, verdicts } from '../data/site';
         {verdicts.map((v, i) => (
           <Reveal client:visible delay={i * 0.08}>
             <article class={`p-8 md:p-10 border-b border-rule ${i < 2 ? 'md:border-r' : ''} flex flex-col gap-5 min-h-[320px] hover:bg-paper-light transition-colors duration-500`}>
-              <div class="flex justify-between font-mono uppercase text-ink-mute" style="font-size:0.68rem; letter-spacing:0.18em;">
+              <div class="flex justify-between mono-meta text-ink-mute">
                 <span>{v.year}</span>
                 <span>{v.area}</span>
               </div>
-              <p class="font-serif flex-grow m-0" style="font-size: clamp(1.25rem,1.7vw,1.55rem); line-height:1.25; letter-spacing:-0.015em; color:#0a0a0a;">{v.lede}</p>
-              <span class="font-mono uppercase text-gold" style="font-size:0.78rem; letter-spacing:0.16em;">— {v.outcome}</span>
+              <p class="font-display flex-grow m-0" style="font-size: clamp(1.25rem,1.7vw,1.55rem); line-height:1.3; letter-spacing:-0.015em; color:#0a0a0a; font-weight:500;">{v.lede}</p>
+              <span class="font-mono uppercase text-gold-deep" style="font-size:0.78rem; letter-spacing:0.18em; font-weight:600;">— {v.outcome}</span>
             </article>
           </Reveal>
         ))}
@@ -110,19 +134,19 @@ import { stats, verdicts } from '../data/site';
         <span class="eyebrow on-dark justify-center mx-auto">004 — Görüşme</span>
       </Reveal>
       <Reveal client:visible delay={0.1}>
-        <h2 class="font-serif mt-6 mx-auto" style="font-size: clamp(2.4rem,5vw,4rem); line-height:1.05; letter-spacing:-0.025em; max-width: 18ch; color:#f5f1e8;">
-          Doğru zamanda, doğru avukat.
+        <h2 class="font-display mt-6 mx-auto" style="font-size: clamp(2.4rem,5vw,4rem); line-height:1.08; letter-spacing:-0.025em; max-width: 18ch; color:#f5f1e8; font-weight:500;">
+          Doğru zamanda, <span class="accent-italic" style="color:#d2ae6f;">doğru avukat</span>.
         </h2>
       </Reveal>
       <Reveal client:visible delay={0.18}>
-        <p class="lead mx-auto mt-6" style="color:rgba(245,241,232,0.8); max-width: 42ch;">
-          İlk görüşmemiz takdire bağlı ve gizlidir. Dosyanızı değerlendirir, yol haritasını birlikte belirleriz.
+        <p class="lead mx-auto mt-6" style="color:rgba(245,241,232,0.85); max-width: 42ch;">
+          İlk görüşme takdire bağlı ve gizlidir. Dosyanızı değerlendirir, yol haritasını birlikte belirleriz.
         </p>
       </Reveal>
       <Reveal client:visible delay={0.26}>
         <div class="mt-10 flex gap-4 justify-center flex-wrap">
           <a href="/iletisim" class="ed-btn on-dark">Görüşme Talep Et</a>
-          <a href="/hakkimizda" class="ed-link on-dark">Bizi Tanıyın</a>
+          <a href="/hakkimizda" class="ed-link on-dark">Avukatı tanıyın</a>
         </div>
       </Reveal>
     </div>
